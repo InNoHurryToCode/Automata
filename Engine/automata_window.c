@@ -52,6 +52,12 @@ void automataWindowCreate(unsigned int width, unsigned int height, const char *t
 }
 
 void automataWindowTerminate() {
+	/* terminate window */
+	if (window) {
+		glfwDestroyWindow(window->window);
+		free(window);
+	}
+
 	/* terminate glfw */
 	glfwTerminate();
 }
