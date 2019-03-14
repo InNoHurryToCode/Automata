@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "automata_const.h"
 #include "automata_window.h"
-#include "automata_engine.h"
 
 int main() {
 	/* intialize application */
@@ -13,7 +12,7 @@ int main() {
 	automataWindowCreate(1280, 720, "Automata Engine");
 
 	/* application loop */
-	while (automataWindowIsActive) {
+	while (automataWindowIsAlive) {
 		automataWindowUpdate();
 	}
 
