@@ -29,9 +29,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="automata_engine.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="automata_window.h">
       <Filter>Source Files</Filter>
     </ClInclude>

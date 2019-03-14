@@ -130,7 +130,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="automata_const.h" />
-    <ClInclude Include="automata_engine.h" />
     <ClInclude Include="automata_window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
