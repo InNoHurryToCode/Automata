@@ -17,6 +17,10 @@ void automataWindowInit() {
 }
 
 void automataWindowCreate(unsigned int width, unsigned int height, const char *title) {
+	if (window || window->window) {
+		return;
+	}
+	
 	/* allocate window memory */
 	window = malloc(sizeof(AutomataWindow *));
 
@@ -57,32 +61,56 @@ void automataWindowTerminate() {
 }
 
 int automataWindowIsAlive() {
+	if (!window || !window->window) {
+		return 0;
+	}
+
 	/* get if window is active */
 	return !glfwWindowShouldClose(window->window);
 }
 
 void automataWindowUpdate() {
+	if (!window || !window->window) {
+		return;
+	}
+
 	/* swap buffer and call callbacks */
 	glfwSwapBuffers(window->window);
 	glfwPollEvents();
 }
 
 unsigned int automataWindowGetWidth() {
+	if (!window || !window->window) {
+		return 0;
+	}
+	
 	/* get window width */
 	return window->width;
 }
 
 unsigned int automataWindowGetHeight() {
+	if (!window || !window->window) {
+		return 0;
+	}
+	
 	/* get window height */
 	return window->height;
 }
 
 const char *automataWindowGetTitle() {
+	if (!window || !window->window) {
+		return NULL;
+	}
+	
 	/* get window title */
 	return window->title;
 }
 
 void automataWindowSetTitle(const char *title) {
+	if (!window || !window->window) {
+		return;
+	}
+	
 	/* set window title */
 	window->title = title;
 
@@ -90,7 +118,7 @@ void automataWindowSetTitle(const char *title) {
 }
 
 void automataWindowSetSize(unsigned int width, unsigned int height) {
-	if (!window) {
+	if (!window || !window->window) {
 		return;
 	}
 
@@ -103,7 +131,7 @@ void automataWindowSetSize(unsigned int width, unsigned int height) {
 }
 
 void automataWindowCallbackResize(GLFWwindow* glfwWindow, int width, int height) {
-	if (!window) {
+	if (!window || !window->window) {
 		return;
 	}
 
