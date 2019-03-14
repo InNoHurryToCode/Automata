@@ -16,11 +16,7 @@ void automataWindowInit() {
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 }
 
-void automataWindowCreate(unsigned int width, unsigned int height, const char *title) {
-	if (window || window->window) {
-		return;
-	}
-	
+void automataWindowCreate(unsigned int width, unsigned int height, const char *title) {	
 	/* allocate window memory */
 	window = malloc(sizeof(AutomataWindow *));
 
