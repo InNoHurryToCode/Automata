@@ -21,7 +21,7 @@ void automataWindowCreate(unsigned int width, unsigned int height, const char *t
 	window = malloc(sizeof(AutomataWindow *));
 
 	if (!window) {
-		return NULL;
+		return;
 	}
 
 	/* create window */
@@ -48,7 +48,7 @@ void automataWindowCreate(unsigned int width, unsigned int height, const char *t
 	glViewport(0, 0, window->width, window->height);
 
 	/* set window callback */
-	glfwSetFramebufferSizeCallback(window, automataWindowCallbackResize);
+	glfwSetFramebufferSizeCallback(window->window, automataWindowCallbackResize);
 }
 
 void automataWindowTerminate() {
