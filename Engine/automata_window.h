@@ -13,6 +13,7 @@ struct AutomataWindow {
 	const char *title;
 };
 
+/* functions */
 void automataWindowInit();
 void automataWindowCreate(unsigned int width, unsigned int height, const char *title);
 void automataWindowTerminate();
@@ -23,6 +24,8 @@ unsigned int automataWindowGetHeight();
 const char *automataWindowGetTitle();
 void automataWindowSetTitle(const char *title);
 void automataWindowSetSize(unsigned int width, unsigned int height);
+
+/* callbacks */
 void automataWindowCallbackResize(GLFWwindow* glfwWindow, int width, int height);
 
 #endif
