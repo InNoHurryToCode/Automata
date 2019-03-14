@@ -24,9 +24,18 @@
     <ClCompile Include="automata_engine.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="automata_window.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="automata_engine.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="automata_window.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="automata_const.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

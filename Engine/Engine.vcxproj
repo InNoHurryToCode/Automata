@@ -126,9 +126,12 @@
   <ItemGroup>
     <ClCompile Include="..\Dependencies\glad-14.03.2019\src\glad.c" />
     <ClCompile Include="automata_engine.c" />
+    <ClCompile Include="automata_window.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="automata_const.h" />
     <ClInclude Include="automata_engine.h" />
+    <ClInclude Include="automata_window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
