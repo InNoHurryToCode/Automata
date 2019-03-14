@@ -27,12 +27,18 @@
     <ClCompile Include="automata_window.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="automata_input.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="automata_window.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="automata_const.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="automata_input.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

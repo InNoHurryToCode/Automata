@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <glad/glad.h>
 #include "automata_const.h"
+#include "automata_input.h"
 #include "automata_window.h"
 
 static AutomataWindow *window = NULL;
@@ -49,6 +50,18 @@ void automataWindowCreate(unsigned int width, unsigned int height, const char *t
 
 	/* set window callback */
 	glfwSetFramebufferSizeCallback(window->window, automataWindowCallbackResize);
+	glfwSetKeyCallback(window->window, automataInputKeyboardKeyCallback);
+	glfwSetMouseButtonCallback(window->window, automataInputMouseButtonCallback);
+	glfwSetCursorPosCallback(window->window, automataInputMousePositionCallback);
+}
+
+void automataWindowClose() {
+	if (!window || !window->window) {
+		return;
+	}
+
+	/* close the window */
+	glfwSetWindowShouldClose(window->window, 1);
 }
 
 void automataWindowTerminate() {
