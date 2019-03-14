@@ -75,6 +75,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>D:\Projects\Git\automata\Dependencies\glad-14.03.2019\include;D:\Projects\Git\automata\Dependencies\stb-14.03.2019\include;D:\Projects\Git\automata\Dependencies\glfw-3.2.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Projects\Git\automata\Dependencies\glfw-3.2.1\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
