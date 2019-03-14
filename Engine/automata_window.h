@@ -16,7 +16,7 @@ struct AutomataWindow {
 void automataWindowInit();
 void automataWindowCreate(unsigned int width, unsigned int height, const char *title);
 void automataWindowTerminate();
-int automataWindowIsActive();
+int automataWindowIsAlive();
 void automataWindowUpdate();
 unsigned int automataWindowGetWidth();
 unsigned int automataWindowGetHeight();
