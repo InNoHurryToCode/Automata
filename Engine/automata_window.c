@@ -56,7 +56,7 @@ void automataWindowTerminate() {
 	glfwTerminate();
 }
 
-int automataWindowIsActive() {
+int automataWindowIsAlive() {
 	/* get if window is active */
 	return !glfwWindowShouldClose(window->window);
 }
