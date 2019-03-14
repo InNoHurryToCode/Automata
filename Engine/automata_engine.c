@@ -12,7 +12,7 @@ int main() {
 	automataWindowCreate(1280, 720, "Automata Engine");
 
 	/* application loop */
-	while (automataWindowIsAlive) {
+	while (automataWindowIsAlive()) {
 		automataWindowUpdate();
 	}
 
