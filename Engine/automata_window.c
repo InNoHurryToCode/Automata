@@ -11,7 +11,7 @@ typedef struct AutomataWindow {
 	const char *title;
 } AutomataWindow;
 
-static AutomataWindow *window = NULL;
+static AutomataWindow window = { 0 };
 
 void automataWindowInit() {
 	/* initialize GLFW */
@@ -25,26 +25,19 @@ void automataWindowInit() {
 }
 
 void automataWindowCreate(unsigned int width, unsigned int height, const char *title) {	
-	/* allocate window memory */
-	window = malloc(sizeof(AutomataWindow *));
-
-	if (!window) {
-		return;
-	}
-
 	/* create window */
-	window->width = width;
-	window->height = height;
-	window->title = title;
-	window->window = glfwCreateWindow(width, height, title, NULL, NULL);
+	window.width = width;
+	window.height = height;
+	window.title = title;
+	window.window = glfwCreateWindow(width, height, title, NULL, NULL);
 
-	if (!window->window) {
+	if (!window.window) {
 		automataWindowTerminate();
 		return;
 	}
 
 	/* make window context */
-	glfwMakeContextCurrent(window->window);
+	glfwMakeContextCurrent(window.window);
 
 	/* check if OpenGL context is initialized */
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -53,22 +46,22 @@ void automataWindowCreate(unsigned int width, unsigned int height, const char *t
 	}
 
 	/* set window viewport */
-	glViewport(0, 0, window->width, window->height);
+	glViewport(0, 0, window.width, window.height);
 
 	/* set window callback */
-	glfwSetFramebufferSizeCallback(window->window, automataWindowCallbackResize);
-	glfwSetKeyCallback(window->window, automataInputKeyboardKeyCallback);
-	glfwSetMouseButtonCallback(window->window, automataInputMouseButtonCallback);
-	glfwSetCursorPosCallback(window->window, automataInputMousePositionCallback);
+	glfwSetFramebufferSizeCallback(window.window, automataWindowCallbackResize);
+	glfwSetKeyCallback(window.window, automataInputKeyboardKeyCallback);
+	glfwSetMouseButtonCallback(window.window, automataInputMouseButtonCallback);
+	glfwSetCursorPosCallback(window.window, automataInputMousePositionCallback);
 }
 
 void automataWindowClose() {
-	if (!window || !window->window) {
+	if (!window.window) {
 		return;
 	}
 
 	/* close the window */
-	glfwSetWindowShouldClose(window->window, 1);
+	glfwSetWindowShouldClose(window.window, 1);
 }
 
 void automataWindowTerminate() {
@@ -77,83 +70,83 @@ void automataWindowTerminate() {
 }
 
 int automataWindowIsAlive() {
-	if (!window || !window->window) {
+	if (!window.window) {
 		return 0;
 	}
 
 	/* get if window is active */
-	return !glfwWindowShouldClose(window->window);
+	return !glfwWindowShouldClose(window.window);
 }
 
 void automataWindowUpdate() {
-	if (!window || !window->window) {
+	if (!window.window) {
 		return;
 	}
 
 	/* swap buffer and call callbacks */
-	glfwSwapBuffers(window->window);
+	glfwSwapBuffers(window.window);
 	glfwPollEvents();
 }
 
 unsigned int automataWindowGetWidth() {
-	if (!window || !window->window) {
+	if (!window.window) {
 		return 0;
 	}
 	
 	/* get window width */
-	return window->width;
+	return window.width;
 }
 
 unsigned int automataWindowGetHeight() {
-	if (!window || !window->window) {
+	if (!window.window) {
 		return 0;
 	}
 	
 	/* get window height */
-	return window->height;
+	return window.height;
 }
 
 const char *automataWindowGetTitle() {
-	if (!window || !window->window) {
+	if (!window.window) {
 		return NULL;
 	}
 	
 	/* get window title */
-	return window->title;
+	return window.title;
 }
 
 void automataWindowSetTitle(const char *title) {
-	if (!window || !window->window) {
+	if (!window.window) {
 		return;
 	}
 	
 	/* set window title */
-	window->title = title;
+	window.title = title;
 
-	glfwSetWindowTitle(window->window, title);
+	glfwSetWindowTitle(window.window, title);
 }
 
 void automataWindowSetSize(unsigned int width, unsigned int height) {
-	if (!window || !window->window) {
+	if (!window.window) {
 		return;
 	}
 
 	/* set window size */
-	window->width = width;
-	window->height = height;
+	window.width = width;
+	window.height = height;
 
 	/* apply window size to window */
-	glfwSetWindowSize(window->window, (int)width, (int)height);
+	glfwSetWindowSize(window.window, (int)width, (int)height);
 }
 
 void automataWindowCallbackResize(GLFWwindow *glfwWindow, int width, int height) {
-	if (!window || !window->window) {
+	if (!window.window) {
 		return;
 	}
 
 	/* set window size */
-	window->width = (unsigned int)width;
-	window->height = (unsigned int)height;
+	window.width = (unsigned int)width;
+	window.height = (unsigned int)height;
 
 	/* apply window size to OpenGL context */
 	glViewport(0, 0, width, height);
