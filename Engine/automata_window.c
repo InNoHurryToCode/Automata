@@ -4,6 +4,13 @@
 #include "automata_input.h"
 #include "automata_window.h"
 
+typedef struct AutomataWindow {
+	GLFWwindow *window;
+	unsigned int width;
+	unsigned int height;
+	const char *title;
+} AutomataWindow;
+
 static AutomataWindow *window = NULL;
 
 void automataWindowInit() {

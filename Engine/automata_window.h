@@ -3,16 +3,6 @@
 
 #include <glfw/glfw3.h>
 
-/* types */
-typedef struct AutomataWindow AutomataWindow;
-
-struct AutomataWindow {
-	GLFWwindow *window;
-	unsigned int width;
-	unsigned int height;
-	const char *title;
-};
-
 /* functions */
 void automataWindowInit();
 void automataWindowCreate(unsigned int width, unsigned int height, const char *title);
