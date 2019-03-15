@@ -38,7 +38,7 @@ double automataInputGetMouseY() {
 	return mouseY;
 }
 
-void automataInputKeyboardKeyCallback(GLFWwindow* glfwWindow, int key, int scancode, int action, int mods) {
+void automataInputKeyboardKeyCallback(GLFWwindow *glfwWindow, int key, int scancode, int action, int mods) {
 	if (key == GLFW_KEY_UNKNOWN) {
 		return;
 	}
@@ -51,7 +51,7 @@ void automataInputKeyboardKeyCallback(GLFWwindow* glfwWindow, int key, int scanc
 	}
 }
 
-void automataInputMouseButtonCallback(GLFWwindow* glfwWindow, int button, int action, int mods) {
+void automataInputMouseButtonCallback(GLFWwindow *glfwWindow, int button, int action, int mods) {
 	/* register keyboard key state */
 	if (action == GLFW_PRESS) {
 		keys[button + AUTOMATA_INPUT_KEYBOARD_KEYS_AMOUNT] = 1;
@@ -60,7 +60,7 @@ void automataInputMouseButtonCallback(GLFWwindow* glfwWindow, int button, int ac
 	}
 }
 
-void automataInputMousePositionCallback(GLFWwindow* glfwWindow, double xpos, double ypos) {
+void automataInputMousePositionCallback(GLFWwindow *glfwWindow, double xpos, double ypos) {
 	/* register mouse input */
 	mouseX = xpos;
 	mouseY = ypos;

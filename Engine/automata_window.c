@@ -139,7 +139,7 @@ void automataWindowSetSize(unsigned int width, unsigned int height) {
 	glfwSetWindowSize(window->window, window->width, window->height);
 }
 
-void automataWindowCallbackResize(GLFWwindow* glfwWindow, int width, int height) {
+void automataWindowCallbackResize(GLFWwindow *glfwWindow, int width, int height) {
 	if (!window || !window->window) {
 		return;
 	}

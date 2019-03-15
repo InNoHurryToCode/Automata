@@ -10,8 +10,8 @@ double automataInputGetMouseX();
 double automataInputGetMouseY();
 
 /* callbacks */
-void automataInputKeyboardKeyCallback(GLFWwindow* glfwWindow, int key, int scancode, int action, int mods);
-void automataInputMouseButtonCallback(GLFWwindow* glfwWindow, int button, int action, int mods);
-void automataInputMousePositionCallback(GLFWwindow* glfwWindow, double xpos, double ypos);
+void automataInputKeyboardKeyCallback(GLFWwindow *glfwWindow, int key, int scancode, int action, int mods);
+void automataInputMouseButtonCallback(GLFWwindow *glfwWindow, int button, int action, int mods);
+void automataInputMousePositionCallback(GLFWwindow *glfwWindow, double xpos, double ypos);
 
 #endif
