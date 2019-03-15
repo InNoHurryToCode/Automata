@@ -29,7 +29,7 @@ void automataWindowCreate(unsigned int width, unsigned int height, const char *t
 	window->width = width;
 	window->height = height;
 	window->title = title;
-	window->window = glfwCreateWindow(window->width, window->height, window->title, NULL, NULL);
+	window->window = glfwCreateWindow(width, height, title, NULL, NULL);
 
 	if (!window->window) {
 		automataWindowTerminate();
@@ -136,7 +136,7 @@ void automataWindowSetSize(unsigned int width, unsigned int height) {
 	window->height = height;
 
 	/* apply window size to window */
-	glfwSetWindowSize(window->window, window->width, window->height);
+	glfwSetWindowSize(window->window, (int)width, (int)height);
 }
 
 void automataWindowCallbackResize(GLFWwindow *glfwWindow, int width, int height) {
