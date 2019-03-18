@@ -22,6 +22,7 @@ void automataWindowClose();
 void automataWindowTerminate();
 int automataWindowIsAlive();
 void automataWindowUpdate();
+void automataWindowSwapBuffers();
 unsigned int automataWindowGetWidth();
 unsigned int automataWindowGetHeight();
 const char *automataWindowGetTitle();

@@ -84,9 +84,17 @@ void automataWindowUpdate() {
 		return;
 	}
 
-	/* swap buffer and call callbacks */
-	glfwSwapBuffers(window.window);
+	/* call callbacks */
 	glfwPollEvents();
+}
+
+void automataWindowSwapBuffers() {
+	if (!window.window) {
+		return;
+	}
+
+	/* swap buffers */
+	glfwSwapBuffers(window.window);
 }
 
 unsigned int automataWindowGetWidth() {

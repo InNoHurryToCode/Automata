@@ -9,12 +9,14 @@ int main() {
 	automataWindowCreate(1280, 720, "Automata Engine");
 
 	/* application loop */
-	while (automataWindowIsAlive()) {		
+	while (automataWindowIsAlive()) {
+		automataWindowUpdate();
+
 		if (automataInputGetKey(AUTOMATA_KEY_ESC)) {
 			automataWindowClose();
 		}
 
-		automataWindowUpdate();
+		automataWindowSwapBuffers();
 	}
 
 	/* terminate application */
