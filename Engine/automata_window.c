@@ -117,7 +117,7 @@ const char *automataWindowGetTitle() {
 
 AutomataWindowMode automataWindowGetMode() {
 	if (!window.window) {
-		return;
+		return AUTOMATA_WINDOW_MODE_UNKNOWN;
 	}
 	
 	return window.mode;

@@ -35,9 +35,6 @@
     <ClInclude Include="automata_window.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="automata_const.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="automata_input.h">
       <Filter>Source Files</Filter>
     </ClInclude>

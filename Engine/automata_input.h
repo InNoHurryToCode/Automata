@@ -4,36 +4,14 @@
 #include <glfw/glfw3.h>
 
 /* constant */
-#define AUTOMATA_INPUT_KEYS_AMOUNT 440
-#define AUTOMATA_INPUT_AXIS_AMOUNT 50
+#define AUTOMATA_INPUT_KEYS_AMOUNT 580
+#define AUTOMATA_INPUT_AXES_AMOUNT 100
 #define AUTOMATA_INPUT_LAST_KEYBOARD_KEY GLFW_KEY_LAST
 #define AUTOMATA_INPUT_LAST_MOUSE_BUTTON AUTOMATA_KEY_MOUSE_8
 #define AUTOMATA_INPUT_LAST_GAMEPAD1_BUTTON AUTOMATA_KEY_GAMEPAD1_DPAD_LEFT
 #define AUTOMATA_INPUT_LAST_GAMEPAD2_BUTTON AUTOMATA_KEY_GAMEPAD2_DPAD_LEFT
 #define AUTOMATA_INPUT_LAST_GAMEPAD3_BUTTON AUTOMATA_KEY_GAMEPAD3_DPAD_LEFT
 #define AUTOMATA_INPUT_LAST_GAMEPAD4_BUTTON AUTOMATA_KEY_GAMEPAD4_DPAD_LEFT
-
-/* GLFW defines, remove this when 3.3 is released */
-#define GLFW_GAMEPAD_BUTTON_A 0
-#define GLFW_GAMEPAD_BUTTON_B 1
-#define GLFW_GAMEPAD_BUTTON_X 2
-#define GLFW_GAMEPAD_BUTTON_Y 3
-#define GLFW_GAMEPAD_BUTTON_LEFT_BUMPER 4
-#define GLFW_GAMEPAD_BUTTON_RIGHT_BUMPER 5
-#define GLFW_GAMEPAD_BUTTON_BACK 6
-#define GLFW_GAMEPAD_BUTTON_START 7
-#define GLFW_GAMEPAD_BUTTON_GUIDE 8
-#define GLFW_GAMEPAD_BUTTON_LEFT_THUMB 9
-#define GLFW_GAMEPAD_BUTTON_RIGHT_THUMB 10
-#define GLFW_GAMEPAD_BUTTON_DPAD_UP 11
-#define GLFW_GAMEPAD_BUTTON_DPAD_RIGHT 12
-#define GLFW_GAMEPAD_BUTTON_DPAD_DOWN 13
-#define GLFW_GAMEPAD_BUTTON_DPAD_LEFT 14
-#define GLFW_GAMEPAD_BUTTON_LAST GLFW_GAMEPAD_BUTTON_DPAD_LEFT
-#define GLFW_GAMEPAD_BUTTON_CROSS GLFW_GAMEPAD_BUTTON_A
-#define GLFW_GAMEPAD_BUTTON_CIRCLE GLFW_GAMEPAD_BUTTON_B
-#define GLFW_GAMEPAD_BUTTON_SQUARE GLFW_GAMEPAD_BUTTON_X
-#define GLFW_GAMEPAD_BUTTON_TRIANGLE GLFW_GAMEPAD_BUTTON_Y
 
 /* data structures */
 typedef enum AutomataInputKey {
@@ -267,11 +245,15 @@ typedef enum AutomataInputAxis {
 /* functions */
 int automataInputGetKey(AutomataInputKey key);
 int automataInputGetAnyKey();
+AutomataInputKey automataInputDetectKey();
 double automataInputGetAxis(AutomataInputAxis axis);
 
 /* callbacks */
+void automataInputUpdate();
 void automataInputKeyboardKeyCallback(GLFWwindow *glfwWindow, int key, int scancode, int action, int mods);
 void automataInputMouseButtonCallback(GLFWwindow *glfwWindow, int button, int action, int mods);
 void automataInputMousePositionCallback(GLFWwindow *glfwWindow, double xpos, double ypos);
+void automataInputGamepadButtonCallback();
+void automataInputGamepadConnectedCallback(int joy, int event);
 
 #endif

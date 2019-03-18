@@ -1,9 +1,12 @@
 #include <glfw/glfw3.h>
-#include "automata_const.h"
 #include "automata_input.h"
 
 static char keys[AUTOMATA_INPUT_KEYS_AMOUNT] = { 0 };
-static double axis[AUTOMATA_INPUT_AXIS_AMOUNT] = { 0.0 };
+static double axes[AUTOMATA_INPUT_AXES_AMOUNT] = { 0.0 };
+
+void automataInputUpdate() {
+	automataInputGamepadButtonCallback();
+}
 
 int automataInputGetKey(AutomataInputKey key) {
 	if (key < 0 || key >= AUTOMATA_INPUT_KEYS_AMOUNT) {
@@ -22,18 +25,35 @@ int automataInputGetAnyKey() {
 		if (keys[i]) {
 			return keys[i];
 		}
+
+		++i;
 	}
 
 	return 0;
 }
 
-double automataInputGetAxis(AutomataInputAxis key) {
-	if (key < 0 || key >= AUTOMATA_INPUT_AXIS_AMOUNT) {
+AutomataInputKey automataInputDetectKey() {
+	/* get which key is pressed */
+	unsigned int i = 0;
+
+	while (i < AUTOMATA_INPUT_KEYS_AMOUNT) {
+		if (keys[i]) {
+			return i;
+		}
+
+		++i;
+	}
+
+	return AUTOMATA_KEY_UNKNOWN;
+}
+
+double automataInputGetAxis(AutomataInputAxis axis) {
+	if (axis < 0 || axis >= AUTOMATA_INPUT_AXIS_AMOUNT) {
 		return 0;
 	}
 	
 	/* get axis */
-	return axis[key];
+	return axes[axis];
 }
 
 void automataInputKeyboardKeyCallback(GLFWwindow *glfwWindow, int key, int scancode, int action, int mods) {
@@ -60,6 +80,55 @@ void automataInputMouseButtonCallback(GLFWwindow *glfwWindow, int button, int ac
 
 void automataInputMousePositionCallback(GLFWwindow *glfwWindow, double xpos, double ypos) {
 	/* register mouse input */
-	axis[AUTOMATA_AXIS_MOUSE_X] = xpos;
-	axis[AUTOMATA_AXIS_MOUSE_Y] = ypos;
+	axes[AUTOMATA_AXIS_MOUSE_X] = xpos;
+	axes[AUTOMATA_AXIS_MOUSE_Y] = ypos;
+}
+
+/* BROKEN CODE, NEEDS FIX */
+void automataInputGamepadButtonCallback() {
+	int i = 0;
+	int j = 0;
+	GLFWgamepadstate state;
+
+	while (i <= GLFW_JOYSTICK_LAST) {
+		/* gamepad detected */
+		if (glfwGetGamepadState(i, &state)) {
+			/* get button states */
+			while (j <= GLFW_GAMEPAD_BUTTON_LAST) {
+				keys[j + (AUTOMATA_INPUT_LAST_MOUSE_BUTTON + (GLFW_GAMEPAD_BUTTON_LAST * i + 1))] = state.buttons[j];
+				++j;
+			}
+
+			/* get axes states */
+			i = 0;
+
+			while (j <= GLFW_GAMEPAD_AXIS_LAST) {
+				axes[j + (GLFW_GAMEPAD_AXIS_LAST * i + 3)] = state.axes[j];
+				++j;
+			}
+		}
+
+		++i;
+	}
+}
+
+/* BROKEN CODE, NEEDS FIX */
+void automataInputGamepadConnectedCallback(int joy, int event) {
+	int i = 0;
+	
+	if (event == GLFW_DISCONNECTED) {
+		/* get button states */
+		while (i <= GLFW_GAMEPAD_BUTTON_LAST) {
+			keys[i + (AUTOMATA_INPUT_LAST_MOUSE_BUTTON + (GLFW_GAMEPAD_BUTTON_LAST * joy + 1))] = 0;
+			++i;
+		}
+
+		/* get axes states */
+		i = 0;
+		
+		while (i <= GLFW_GAMEPAD_AXIS_LAST) {
+			axes[i + (GLFW_GAMEPAD_AXIS_LAST * joy + 3)] = 0.0;
+			++i;
+		}
+	}
 }
