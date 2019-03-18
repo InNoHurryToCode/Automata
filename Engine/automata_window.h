@@ -13,6 +13,7 @@ void automataWindowUpdate();
 unsigned int automataWindowGetWidth();
 unsigned int automataWindowGetHeight();
 const char *automataWindowGetTitle();
+AutomataWindowMode automataWindowGetMode();
 void automataWindowSetTitle(const char *title);
 void automataWindowSetSize(unsigned int width, unsigned int height);
 void automataWindowSetMode(AutomataWindowMode mode);
