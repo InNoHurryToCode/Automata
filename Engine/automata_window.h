@@ -2,6 +2,7 @@
 #define AUTOMATA_WINDOW_H
 
 #include <glfw/glfw3.h>
+#include "automata_const.h"
 
 /* functions */
 void automataWindowInit();

@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <glad/glad.h>
-#include "automata_const.h"
 #include "automata_input.h"
 #include "automata_window.h"
 
