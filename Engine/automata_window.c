@@ -4,7 +4,7 @@
 #include "automata_input.h"
 #include "automata_window.h"
 
-typedef struct AutomataWindow {
+struct AutomataWindow {
 	GLFWwindow *window;
 	unsigned int width;
 	unsigned int height;
@@ -12,7 +12,7 @@ typedef struct AutomataWindow {
 	AutomataWindowMode mode;
 } AutomataWindow;
 
-static AutomataWindow window = { 0 };
+static struct AutomataWindow window = { 0 };
 
 void automataWindowInit() {
 	/* initialize GLFW */
