@@ -4,9 +4,121 @@
 
 static char keys[AUTOMATA_INPUT_KEYS_AMOUNT] = { 0 };
 static double axes[AUTOMATA_INPUT_AXES_AMOUNT] = { 0.0 };
+static char gamepads[AUTOMATA_INPUT_GAMEPAD_AMOUNT] = { 0 };
+
+static int automataInputGetGamepadButtonSegment(AutomataInputGamepad gamepad) {
+	switch (gamepad) {
+	case AUTOMATA_GAMEPAD_1:
+		return AUTOMATA_INPUT_LAST_MOUSE_BUTTON;
+
+	case AUTOMATA_GAMEPAD_2:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_1_BUTTON;
+
+	case AUTOMATA_GAMEPAD_3:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_2_BUTTON;
+
+	case AUTOMATA_GAMEPAD_4:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_3_BUTTON;
+
+	case AUTOMATA_GAMEPAD_5:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_4_BUTTON;
+
+	case AUTOMATA_GAMEPAD_6:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_5_BUTTON;
+
+	case AUTOMATA_GAMEPAD_7:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_6_BUTTON;
+
+	case AUTOMATA_GAMEPAD_8:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_7_BUTTON;
+
+	case AUTOMATA_GAMEPAD_9:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_8_BUTTON;
+
+	case AUTOMATA_GAMEPAD_10:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_9_BUTTON;
+
+	case AUTOMATA_GAMEPAD_11:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_10_BUTTON;
+
+	case AUTOMATA_GAMEPAD_12:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_11_BUTTON;
+
+	case AUTOMATA_GAMEPAD_13:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_12_BUTTON;
+
+	case AUTOMATA_GAMEPAD_14:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_13_BUTTON;
+
+	case AUTOMATA_GAMEPAD_15:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_14_BUTTON;
+
+	case AUTOMATA_GAMEPAD_16:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_15_BUTTON;
+
+	default:
+		return -1;
+	}
+}
+
+static int automataInputGetGamepadAxisSegment(AutomataInputGamepad gamepad) {
+	switch (gamepad) {
+	case AUTOMATA_GAMEPAD_1:
+		return AUTOMATA_INPUT_LAST_MOUSE_BUTTON;
+
+	case AUTOMATA_GAMEPAD_2:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_1_AXIS;
+
+	case AUTOMATA_GAMEPAD_3:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_2_AXIS;
+
+	case AUTOMATA_GAMEPAD_4:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_3_AXIS;
+
+	case AUTOMATA_GAMEPAD_5:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_4_AXIS;
+
+	case AUTOMATA_GAMEPAD_6:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_5_AXIS;
+
+	case AUTOMATA_GAMEPAD_7:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_6_AXIS;
+
+	case AUTOMATA_GAMEPAD_8:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_7_AXIS;
+
+	case AUTOMATA_GAMEPAD_9:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_8_AXIS;
+
+	case AUTOMATA_GAMEPAD_10:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_9_AXIS;
+
+	case AUTOMATA_GAMEPAD_11:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_10_AXIS;
+
+	case AUTOMATA_GAMEPAD_12:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_11_AXIS;
+
+	case AUTOMATA_GAMEPAD_13:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_12_AXIS;
+
+	case AUTOMATA_GAMEPAD_14:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_13_AXIS;
+
+	case AUTOMATA_GAMEPAD_15:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_14_AXIS;
+
+	case AUTOMATA_GAMEPAD_16:
+		return AUTOMATA_INPUT_LAST_GAMEPAD_15_AXIS;
+
+	default:
+		return -1;
+	}
+}
 
 void automataInputUpdate() {
 	automataInputGamepadButtonCallback();
+	automataInputGamepadAxisCalback();
 }
 
 int automataInputGetKey(AutomataInputKey key) {
@@ -57,6 +169,24 @@ double automataInputGetAxis(AutomataInputAxis axis) {
 	return axes[axis];
 }
 
+int *automataInputGetGamepadState(AutomataInputGamepad gamepad) {
+	if (gamepad >= AUTOMATA_INPUT_GAMEPAD_AMOUNT) {
+		return;
+	}
+
+	/* get gamepad state */
+	return gamepads[gamepad];
+}
+
+const char* automataInputGetGamepadName(AutomataInputGamepad gamepad) {
+	if (gamepad >= AUTOMATA_INPUT_GAMEPAD_AMOUNT) {
+		return NULL;
+	}
+
+	/* get gamepad state */
+	return glfwGetJoystickName(gamepad);
+}
+
 void automataInputKeyboardKeyCallback(GLFWwindow *glfwWindow, int key, int scancode, int action, int mods) {
 	if (key == AUTOMATA_KEY_UNKNOWN) {
 		return;
@@ -85,32 +215,20 @@ void automataInputMousePositionCallback(GLFWwindow *glfwWindow, double xpos, dou
 	axes[AUTOMATA_AXIS_MOUSE_Y] = ypos;
 }
 
-/* BROKEN CODE, NEEDS FIX */
-void automataInputGamepadButtonCallback() {
+void automataInputGamepadAxisCalback() {
 	int i = 0;
 	int j = 0;
-	GLFWgamepadstate state;
+	int axesCount = 0;
+	float* gamepadAxes = NULL;
 
-	while (i <= GLFW_JOYSTICK_LAST) {
-		/* gamepad detected */
-		if (glfwGetGamepadState(i, &state)) {
-			/* get button states */
-			/*
-			while (j <= GLFW_GAMEPAD_BUTTON_LAST) {
-				keys[j + (AUTOMATA_INPUT_LAST_MOUSE_BUTTON + (GLFW_GAMEPAD_BUTTON_LAST * i + 1))] = state.buttons[j];
+	while (i <= AUTOMATA_INPUT_LAST_GAMEPAD) {
+		if (automataInputGetGamepadState(i)) {
+			gamepadAxes = glfwGetJoystickAxes(i, &axesCount);
+
+			while (j < axesCount) {
+				axes[i * j + 2] = gamepadAxes[j];
 				++j;
 			}
-			*/
-
-			/* get axes states */
-			/*
-			i = 0;
-
-			while (j <= GLFW_GAMEPAD_AXIS_LAST) {
-				axes[j + (GLFW_GAMEPAD_AXIS_LAST * i + 3)] = state.axes[j];
-				++j;
-			}
-			*/
 		}
 
 		++i;
@@ -118,12 +236,43 @@ void automataInputGamepadButtonCallback() {
 }
 
 /* BROKEN CODE, NEEDS FIX */
+void automataInputGamepadButtonCallback() {
+	int i = 0;
+	int j = 0;
+	int segment = 0;
+	int buttonsCount = 0;
+	unsigned char* gamepadButtons = NULL;
+
+	while (i <= AUTOMATA_INPUT_LAST_GAMEPAD) {
+		//segment = automataInputGetGamepadButtonSegment(i);
+		segment = i * AUTOMATA_INPUT_GAMEPAD_BUTTONS_COUNT + AUTOMATA_INPUT_LAST_MOUSE_BUTTON + 1
+
+		if (automataInputGetGamepadState(i)) {
+			gamepadButtons = glfwGetJoystickButtons(i, &buttonsCount);
+
+			while (j < AUTOMATA_INPUT_GAMEPAD_BUTTONS_COUNT) {
+				if (j < buttonsCount) {
+					keys[j + segment + 1] = gamepadButtons[j];
+				} else {
+					keys[j + segment + 1] = 0;
+				}
+
+				printf("%d: %d\n", j + segment + 1, keys[j + segment + 1]);
+
+				++j;
+			}
+		}
+
+		++i;
+	}
+}
+
 void automataInputGamepadConnectedCallback(int joy, int event) {
 	if (event == GLFW_CONNECTED) {
-		/* code here */
+		gamepads[joy] = 1;
 	}
 
 	if (event == GLFW_DISCONNECTED) {
-		/* code here */
+		gamepads[joy] = 0;
 	}
 } 

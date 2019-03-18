@@ -11,9 +11,10 @@ int main() {
 	/* application loop */
 	while (automataWindowIsAlive()) {
 		automataWindowUpdate();
-		automataInputUpdate();
+		/*automataInputUpdate();*/
 
-		if (automataInputGetKey(AUTOMATA_KEY_ESC)) {
+		printf("key pressed: %d\n", automataInputDetectKey());
+		if (automataInputGetKey(AUTOMATA_KEY_GAMEPAD_1_17 /*AUTOMATA_KEY_ESC*/)) {
 			automataWindowClose();
 		}
 
