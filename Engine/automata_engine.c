@@ -11,7 +11,7 @@ int main() {
 
 	/* application loop */
 	while (automataWindowIsAlive()) {
-		if (automataInputGetKey(GLFW_KEY_ESCAPE)) {
+		if (automataInputGetKey(AUTOMATA_KEY_ESC)) {
 			automataWindowClose();
 		}
 

@@ -2,12 +2,11 @@
 #include "automata_const.h"
 #include "automata_input.h"
 
-static char keys[AUTOMATA_INPUT_KEYS_TOTAL_AMOUNT] = { 0 };
-static double mouseX = 0.0;
-static double mouseY = 0.0;
+static char keys[AUTOMATA_INPUT_KEYS_AMOUNT] = { 0 };
+static double axis[AUTOMATA_INPUT_AXIS_AMOUNT] = { 0.0 };
 
-int automataInputGetKey(int key) {
-	if (key < 0 || key >= AUTOMATA_INPUT_KEYS_TOTAL_AMOUNT) {
+int automataInputGetKey(AutomataInputKey key) {
+	if (key < 0 || key >= AUTOMATA_INPUT_KEYS_AMOUNT) {
 		return 0;
 	}
 	
@@ -19,27 +18,26 @@ int automataInputGetAnyKey() {
 	/* get any pressed key */
 	unsigned int i = 0;
 
-	while (i < AUTOMATA_INPUT_KEYS_TOTAL_AMOUNT) {
+	while (i < AUTOMATA_INPUT_KEYS_AMOUNT) {
 		if (keys[i]) {
 			return keys[i];
 		}
 	}
 
-	return -1;
+	return 0;
 }
 
-double automataInputGetMouseX() {
-	/* get mouse x position */
-	return mouseX;
-}
-
-double automataInputGetMouseY() {
-	/* get mouse y position */
-	return mouseY;
+double automataInputGetAxis(AutomataInputAxis key) {
+	if (key < 0 || key >= AUTOMATA_INPUT_AXIS_AMOUNT) {
+		return 0;
+	}
+	
+	/* get axis */
+	return axis[key];
 }
 
 void automataInputKeyboardKeyCallback(GLFWwindow *glfwWindow, int key, int scancode, int action, int mods) {
-	if (key == GLFW_KEY_UNKNOWN) {
+	if (key == AUTOMATA_KEY_UNKNOWN) {
 		return;
 	}
 	
@@ -54,14 +52,14 @@ void automataInputKeyboardKeyCallback(GLFWwindow *glfwWindow, int key, int scanc
 void automataInputMouseButtonCallback(GLFWwindow *glfwWindow, int button, int action, int mods) {
 	/* register keyboard key state */
 	if (action == GLFW_PRESS) {
-		keys[button + AUTOMATA_INPUT_KEYBOARD_KEYS_AMOUNT] = 1;
+		keys[button + (AUTOMATA_INPUT_LAST_KEYBOARD_KEY + 1)] = 1;
 	} else {
-		keys[button + AUTOMATA_INPUT_KEYBOARD_KEYS_AMOUNT] = 0;
+		keys[button + (AUTOMATA_INPUT_LAST_KEYBOARD_KEY + 1)] = 0;
 	}
 }
 
 void automataInputMousePositionCallback(GLFWwindow *glfwWindow, double xpos, double ypos) {
 	/* register mouse input */
-	mouseX = xpos;
-	mouseY = ypos;
+	axis[AUTOMATA_AXIS_MOUSE_X] = xpos;
+	axis[AUTOMATA_AXIS_MOUSE_Y] = ypos;
 }
