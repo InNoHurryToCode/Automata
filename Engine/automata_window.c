@@ -143,7 +143,7 @@ void automataWindowSetSize(unsigned int width, unsigned int height) {
 void automataWindowSetMode(AutomataWindowModes mode) {
 	/* get monitor data */
 	GLFWmonitor *monitor = glfwGetPrimaryMonitor();
-	GLFWvidmode *videoMode = glfwGetVideoMode(monitor);
+	const GLFWvidmode *videoMode = glfwGetVideoMode(monitor);
 	
 	/* set window mode */
 	window.mode = mode;
