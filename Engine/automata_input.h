@@ -589,7 +589,7 @@ AutomataInputKey automataInputDetectKey();
 double automataInputGetAxis(AutomataInputAxis axis);
 
 /* callbacks */
-/* void automataInputUpdate(); */
+void automataInputUpdate();
 void automataInputKeyboardKeyCallback(GLFWwindow *glfwWindow, int key, int scancode, int action, int mods);
 void automataInputMouseButtonCallback(GLFWwindow *glfwWindow, int button, int action, int mods);
 void automataInputMousePositionCallback(GLFWwindow *glfwWindow, double xpos, double ypos);

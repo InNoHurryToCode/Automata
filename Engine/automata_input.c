@@ -5,11 +5,9 @@
 static char keys[AUTOMATA_INPUT_KEYS_AMOUNT] = { 0 };
 static double axes[AUTOMATA_INPUT_AXES_AMOUNT] = { 0.0 };
 
-/*
 void automataInputUpdate() {
 	automataInputGamepadButtonCallback();
 }
-*/
 
 int automataInputGetKey(AutomataInputKey key) {
 	if (key < 0 || key >= AUTOMATA_INPUT_KEYS_AMOUNT) {

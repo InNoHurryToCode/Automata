@@ -11,6 +11,7 @@ int main() {
 	/* application loop */
 	while (automataWindowIsAlive()) {
 		automataWindowUpdate();
+		automataInputUpdate();
 
 		if (automataInputGetKey(AUTOMATA_KEY_ESC)) {
 			automataWindowClose();
