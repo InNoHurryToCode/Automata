@@ -152,13 +152,13 @@ void automataWindowSetMode(AutomataWindowMode mode) {
 	GLFWmonitor *monitor = glfwGetPrimaryMonitor();
 	const GLFWvidmode *videoMode = glfwGetVideoMode(monitor);
 
-	if (window.window || mode == window.mode) {
+	if (!window.window || mode == window.mode) {
 		return;
 	}
 
 	/* set window mode */
 	window.mode = mode;
-
+	
 	switch (mode) {
 	case AUTOMATA_WINDOW_MODE_WINDOWED:
 		glfwSetWindowMonitor(window.window, NULL, 0, 0, window.width, window.height, GLFW_DONT_CARE);
