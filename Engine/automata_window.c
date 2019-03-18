@@ -53,6 +53,7 @@ void automataWindowCreate(unsigned int width, unsigned int height, const char *t
 	glfwSetKeyCallback(window.window, automataInputKeyboardKeyCallback);
 	glfwSetMouseButtonCallback(window.window, automataInputMouseButtonCallback);
 	glfwSetCursorPosCallback(window.window, automataInputMousePositionCallback);
+	glfwSetJoystickCallback(automataInputGamepadConnectedCallback);
 }
 
 void automataWindowClose() {
