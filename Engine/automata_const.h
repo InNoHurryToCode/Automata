@@ -12,12 +12,12 @@
 #define AUTOMATA_OPENGL_MINOR 3
 
 /* window modes */
-typedef enum AutomataWindowModes {
+typedef enum AutomataWindowMode {
 	AUTOMATA_WINDOW_MODE_UNKNOWN = -1,
 	AUTOMATA_WINDOW_MODE_WINDOWED,
 	AUTOMATA_WINDOW_MODE_FULLSCREEN,
 	AUTOMATA_WINDOW_MODE_BORDERLESS
-} AutomataWindowModes;
+} AutomataWindowMode;
 
 /* input keys amount */
 #define AUTOMATA_INPUT_KEYBOARD_KEYS_AMOUNT 348

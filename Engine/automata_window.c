@@ -9,7 +9,7 @@ typedef struct AutomataWindow {
 	unsigned int width;
 	unsigned int height;
 	const char *title;
-	AutomataWindowModes mode;
+	AutomataWindowMode mode;
 } AutomataWindow;
 
 static AutomataWindow window = { 0 };
@@ -116,6 +116,14 @@ const char *automataWindowGetTitle() {
 	return window.title;
 }
 
+AutomataWindowMode automataWindowGetMode() {
+	if (!window.window) {
+		return;
+	}
+	
+	return window.mode;
+}
+
 void automataWindowSetTitle(const char *title) {
 	if (!window.window) {
 		return;
@@ -140,7 +148,7 @@ void automataWindowSetSize(unsigned int width, unsigned int height) {
 	glfwSetWindowSize(window.window, (int)width, (int)height);
 }
 
-void automataWindowSetMode(AutomataWindowModes mode) {
+void automataWindowSetMode(AutomataWindowMode mode) {
 	/* get monitor data */
 	GLFWmonitor *monitor = glfwGetPrimaryMonitor();
 	const GLFWvidmode *videoMode = glfwGetVideoMode(monitor);

@@ -15,7 +15,7 @@ unsigned int automataWindowGetHeight();
 const char *automataWindowGetTitle();
 void automataWindowSetTitle(const char *title);
 void automataWindowSetSize(unsigned int width, unsigned int height);
-void automataWindowSetMode(AutomataWindowModes mode);
+void automataWindowSetMode(AutomataWindowMode mode);
 
 /* callbacks */
 void automataWindowCallbackResize(GLFWwindow *glfwWindow, int width, int height);
