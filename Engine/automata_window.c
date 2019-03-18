@@ -9,6 +9,7 @@ typedef struct AutomataWindow {
 	unsigned int width;
 	unsigned int height;
 	const char *title;
+	unsigned char mode;
 } AutomataWindow;
 
 static AutomataWindow window = { 0 };
@@ -24,7 +25,7 @@ void automataWindowInit() {
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 }
 
-void automataWindowCreate(unsigned int width, unsigned int height, const char *title) {	
+void automataWindowCreate(unsigned int width, unsigned int height, const char *title) {		
 	/* create window */
 	window.width = width;
 	window.height = height;
@@ -137,6 +138,39 @@ void automataWindowSetSize(unsigned int width, unsigned int height) {
 
 	/* apply window size to window */
 	glfwSetWindowSize(window.window, (int)width, (int)height);
+}
+
+void automataWindowSetMode(signed char mode) {
+	/* get monitor data */
+	GLFWmonitor *monitor = glfwGetPrimaryMonitor();
+	GLFWvidmode *videoMode = glfwGetVideoMode(monitor);
+	
+	/* set window mode */
+	window.mode = mode;
+	
+	switch (mode) {
+	case AUTOMATA_WINDOW_MODE_WINDOWED:
+		glfwSetWindowMonitor(window.window, NULL, 0, 0, window.width, window.height, GLFW_DONT_CARE);
+		break;
+
+	case AUTOMATA_WINDOW_MODE_FULLSCREEN:
+		glfwSetWindowMonitor(window.window, monitor, 0, 0, window.width, window.height, GLFW_DONT_CARE);
+		break;
+
+	case AUTOMATA_WINDOW_MODE_BORDERLESS:
+		glfwSetWindowMonitor(window.window, monitor, 0, 0, videoMode->width, videoMode->height, videoMode->refreshRate);
+		break;
+
+	default:
+		/* window mode doesn't exist */
+		window.mode = AUTOMATA_WINDOW_MODE_UNKNOWN;
+		return;
+	}
+
+	if (window.mode == AUTOMATA_WINDOW_MODE_UNKNOWN) {
+		automataWindowTerminate();
+		return;
+	}
 }
 
 void automataWindowCallbackResize(GLFWwindow *glfwWindow, int width, int height) {
