@@ -18,7 +18,7 @@ int main() {
 		}
 
 		printf("1: %d\n", automataInputGetKey(AUTOMATA_KEY_GAMEPAD_1_17));
-		printf("2: %d\n", automataInputGetAxis(AUTOMATA_KEY_GAMEPAD_2_17));
+		printf("2: %d\n", automataInputGetKey(AUTOMATA_KEY_GAMEPAD_2_17));
 
 		automataWindowSwapBuffers();
 	}
