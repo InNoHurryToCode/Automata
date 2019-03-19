@@ -122,7 +122,6 @@ void automataInputGamepadAxisCalback() {
 				if (axis >= axesCount) {
 					axes[axis + segment] = 0.0;
 				} else {
-					//printf("%d, %d: %f\n", gamepad, axis, gamepadAxes[axis]);
 					axes[axis + segment] = gamepadAxes[axis];
 				}
 
@@ -165,11 +164,9 @@ void automataInputGamepadButtonCallback() {
 void automataInputGamepadConnectedCallback(int joy, int event) {
 	if (event == GLFW_CONNECTED) {
 		gamepads[joy] = 1;
-		printf("connected %d", joy);
 	}
 
 	if (event == GLFW_DISCONNECTED) {
 		gamepads[joy] = 0;
-		printf("disconnected %d", joy);
 	}
 } 
