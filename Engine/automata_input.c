@@ -4,7 +4,7 @@
 
 static char keys[AUTOMATA_INPUT_KEYS_AMOUNT] = { 0 };
 static double axes[AUTOMATA_INPUT_AXES_AMOUNT] = { 0.0 };
-static char gamepads[AUTOMATA_INPUT_GAMEPAD_AMOUNT] = { 0 };
+static char gamepads[AUTOMATA_INPUT_GAMEPADS_AMOUNT] = { 0 };
 
 void automataInputUpdate() {
 	automataInputGamepadButtonCallback();
@@ -60,7 +60,7 @@ double automataInputGetAxis(AutomataInputAxis axis) {
 }
 
 int *automataInputGetGamepadState(AutomataInputGamepad gamepad) {
-	if (gamepad >= AUTOMATA_INPUT_GAMEPAD_AMOUNT) {
+	if (gamepad >= AUTOMATA_INPUT_GAMEPADS_AMOUNT) {
 		return;
 	}
 
@@ -69,7 +69,7 @@ int *automataInputGetGamepadState(AutomataInputGamepad gamepad) {
 }
 
 const char* automataInputGetGamepadName(AutomataInputGamepad gamepad) {
-	if (gamepad >= AUTOMATA_INPUT_GAMEPAD_AMOUNT) {
+	if (gamepad >= AUTOMATA_INPUT_GAMEPADS_AMOUNT) {
 		return NULL;
 	}
 
@@ -106,61 +106,70 @@ void automataInputMousePositionCallback(GLFWwindow *glfwWindow, double xpos, dou
 }
 
 void automataInputGamepadAxisCalback() {
-	int i = 0;
-	int j = 0;
+	int gamepad = 0;
+	int axis = 0;
+	int segment = 0;
 	int axesCount = 0;
-	float* gamepadAxes = NULL;
+	float *gamepadAxes = NULL;
 
-	while (i <= AUTOMATA_INPUT_LAST_GAMEPAD) {
-		if (automataInputGetGamepadState(i)) {
-			gamepadAxes = glfwGetJoystickAxes(i, &axesCount);
+	while (gamepad <= AUTOMATA_INPUT_LAST_GAMEPAD) {
+		segment = gamepad * AUTOMATA_INPUT_GAMEPAD_AXES_AMOUNT + AUTOMATA_INPUT_LAST_MOUSE_AXIS + 1;
 
-			while (j < axesCount) {
-				axes[i * j + 2] = gamepadAxes[j];
-				++j;
+		if (automataInputGetGamepadState(gamepad)) {
+			gamepadAxes = glfwGetJoystickAxes(gamepad, &axesCount);
+
+			while (axis < AUTOMATA_INPUT_GAMEPAD_AXES_AMOUNT) {
+				if (axis >= axesCount) {
+					axes[axis + segment] = 0.0;
+				} else {
+					//printf("%d, %d: %f\n", gamepad, axis, gamepadAxes[axis]);
+					axes[axis + segment] = gamepadAxes[axis];
+				}
+
+				++axis;
 			}
 		}
 
-		++i;
+		++gamepad;
 	}
 }
 
 void automataInputGamepadButtonCallback() {
-	int i = 0;
-	int j = 0;
+	int gamepad = 0;
+	int button = 0;
 	int segment = 0;
 	int buttonsCount = 0;
-	unsigned char* gamepadButtons = NULL;
+	unsigned char *gamepadButtons = NULL;
 
-	while (i <= AUTOMATA_INPUT_LAST_GAMEPAD) {
-		segment = i * AUTOMATA_INPUT_GAMEPAD_BUTTONS_COUNT + AUTOMATA_INPUT_LAST_MOUSE_BUTTON + 1;
+	while (gamepad <= AUTOMATA_INPUT_LAST_GAMEPAD) {
+		segment = gamepad * AUTOMATA_INPUT_GAMEPAD_BUTTONS_AMOUNT + AUTOMATA_INPUT_LAST_MOUSE_BUTTON + 1;
 
-		if (automataInputGetGamepadState(i)) {
-			gamepadButtons = glfwGetJoystickButtons(i, &buttonsCount);
+		if (automataInputGetGamepadState(gamepad)) {
+			gamepadButtons = glfwGetJoystickButtons(gamepad, &buttonsCount);
 
-			while (j < AUTOMATA_INPUT_GAMEPAD_BUTTONS_COUNT) {
-				if (j >= buttonsCount) {
-					keys[j + segment + 1] = 0;
+			while (button < AUTOMATA_INPUT_GAMEPAD_BUTTONS_AMOUNT) {
+				if (button >= buttonsCount) {
+					keys[button + segment + 1] = 0;
 				} else {
-					keys[j + segment + 1] = gamepadButtons[j];
-
-					printf("%d: %d\n", j, gamepadButtons[j]);
+					keys[button + segment + 1] = gamepadButtons[button];
 				}
 
-				++j;
+				++button;
 			}
 		}
 
-		++i;
+		++gamepad;
 	}
 }
 
 void automataInputGamepadConnectedCallback(int joy, int event) {
 	if (event == GLFW_CONNECTED) {
 		gamepads[joy] = 1;
+		printf("connected %d", joy);
 	}
 
 	if (event == GLFW_DISCONNECTED) {
 		gamepads[joy] = 0;
+		printf("disconnected %d", joy);
 	}
 } 

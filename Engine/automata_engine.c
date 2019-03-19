@@ -13,10 +13,12 @@ int main() {
 		automataWindowUpdate();
 		automataInputUpdate();
 
-		printf("key pressed: %d\n", automataInputDetectKey());
-		if (automataInputGetKey(AUTOMATA_KEY_GAMEPAD_1_17 /*AUTOMATA_KEY_ESC*/)) {
+		if (automataInputGetKey(AUTOMATA_KEY_ESC)) {
 			automataWindowClose();
 		}
+
+		printf("1: %d\n", automataInputGetKey(AUTOMATA_KEY_GAMEPAD_1_17));
+		printf("2: %d\n", automataInputGetAxis(AUTOMATA_KEY_GAMEPAD_2_17));
 
 		automataWindowSwapBuffers();
 	}
