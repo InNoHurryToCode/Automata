@@ -6,116 +6,6 @@ static char keys[AUTOMATA_INPUT_KEYS_AMOUNT] = { 0 };
 static double axes[AUTOMATA_INPUT_AXES_AMOUNT] = { 0.0 };
 static char gamepads[AUTOMATA_INPUT_GAMEPAD_AMOUNT] = { 0 };
 
-static int automataInputGetGamepadButtonSegment(AutomataInputGamepad gamepad) {
-	switch (gamepad) {
-	case AUTOMATA_GAMEPAD_1:
-		return AUTOMATA_INPUT_LAST_MOUSE_BUTTON;
-
-	case AUTOMATA_GAMEPAD_2:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_1_BUTTON;
-
-	case AUTOMATA_GAMEPAD_3:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_2_BUTTON;
-
-	case AUTOMATA_GAMEPAD_4:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_3_BUTTON;
-
-	case AUTOMATA_GAMEPAD_5:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_4_BUTTON;
-
-	case AUTOMATA_GAMEPAD_6:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_5_BUTTON;
-
-	case AUTOMATA_GAMEPAD_7:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_6_BUTTON;
-
-	case AUTOMATA_GAMEPAD_8:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_7_BUTTON;
-
-	case AUTOMATA_GAMEPAD_9:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_8_BUTTON;
-
-	case AUTOMATA_GAMEPAD_10:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_9_BUTTON;
-
-	case AUTOMATA_GAMEPAD_11:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_10_BUTTON;
-
-	case AUTOMATA_GAMEPAD_12:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_11_BUTTON;
-
-	case AUTOMATA_GAMEPAD_13:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_12_BUTTON;
-
-	case AUTOMATA_GAMEPAD_14:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_13_BUTTON;
-
-	case AUTOMATA_GAMEPAD_15:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_14_BUTTON;
-
-	case AUTOMATA_GAMEPAD_16:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_15_BUTTON;
-
-	default:
-		return -1;
-	}
-}
-
-static int automataInputGetGamepadAxisSegment(AutomataInputGamepad gamepad) {
-	switch (gamepad) {
-	case AUTOMATA_GAMEPAD_1:
-		return AUTOMATA_INPUT_LAST_MOUSE_BUTTON;
-
-	case AUTOMATA_GAMEPAD_2:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_1_AXIS;
-
-	case AUTOMATA_GAMEPAD_3:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_2_AXIS;
-
-	case AUTOMATA_GAMEPAD_4:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_3_AXIS;
-
-	case AUTOMATA_GAMEPAD_5:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_4_AXIS;
-
-	case AUTOMATA_GAMEPAD_6:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_5_AXIS;
-
-	case AUTOMATA_GAMEPAD_7:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_6_AXIS;
-
-	case AUTOMATA_GAMEPAD_8:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_7_AXIS;
-
-	case AUTOMATA_GAMEPAD_9:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_8_AXIS;
-
-	case AUTOMATA_GAMEPAD_10:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_9_AXIS;
-
-	case AUTOMATA_GAMEPAD_11:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_10_AXIS;
-
-	case AUTOMATA_GAMEPAD_12:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_11_AXIS;
-
-	case AUTOMATA_GAMEPAD_13:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_12_AXIS;
-
-	case AUTOMATA_GAMEPAD_14:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_13_AXIS;
-
-	case AUTOMATA_GAMEPAD_15:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_14_AXIS;
-
-	case AUTOMATA_GAMEPAD_16:
-		return AUTOMATA_INPUT_LAST_GAMEPAD_15_AXIS;
-
-	default:
-		return -1;
-	}
-}
-
 void automataInputUpdate() {
 	automataInputGamepadButtonCallback();
 	automataInputGamepadAxisCalback();
@@ -235,7 +125,6 @@ void automataInputGamepadAxisCalback() {
 	}
 }
 
-/* BROKEN CODE, NEEDS FIX */
 void automataInputGamepadButtonCallback() {
 	int i = 0;
 	int j = 0;
@@ -244,20 +133,19 @@ void automataInputGamepadButtonCallback() {
 	unsigned char* gamepadButtons = NULL;
 
 	while (i <= AUTOMATA_INPUT_LAST_GAMEPAD) {
-		//segment = automataInputGetGamepadButtonSegment(i);
-		segment = i * AUTOMATA_INPUT_GAMEPAD_BUTTONS_COUNT + AUTOMATA_INPUT_LAST_MOUSE_BUTTON + 1
+		segment = i * AUTOMATA_INPUT_GAMEPAD_BUTTONS_COUNT + AUTOMATA_INPUT_LAST_MOUSE_BUTTON + 1;
 
 		if (automataInputGetGamepadState(i)) {
 			gamepadButtons = glfwGetJoystickButtons(i, &buttonsCount);
 
 			while (j < AUTOMATA_INPUT_GAMEPAD_BUTTONS_COUNT) {
-				if (j < buttonsCount) {
-					keys[j + segment + 1] = gamepadButtons[j];
-				} else {
+				if (j >= buttonsCount) {
 					keys[j + segment + 1] = 0;
-				}
+				} else {
+					keys[j + segment + 1] = gamepadButtons[j];
 
-				printf("%d: %d\n", j + segment + 1, keys[j + segment + 1]);
+					printf("%d: %d\n", j, gamepadButtons[j]);
+				}
 
 				++j;
 			}
