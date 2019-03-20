@@ -165,7 +165,7 @@ double automataInputGetAxis(AutomataInputAxis axis) {
 
 int automataInputGetGamepadState(AutomataInputGamepad gamepad) {
 	if (gamepad >= AUTOMATA_INPUT_GAMEPADS_AMOUNT) {
-		return;
+		return -1;
 	}
 
 	/* get gamepad state */
