@@ -17,8 +17,13 @@ static void automataInputKeyboardKeyCallback(GLFWwindow *glfwWindow, int key, in
 	}
 }
 
+static void AutomataInputMouseScrollCallback(GLFWwindow *glfwWindow, double xoffset, double yoffset) {
+	/* register scroll input */
+	axes[AUTOMATA_AXIS_MOUSE_SCROLL] = yoffset;
+}
+
 static void automataInputMouseButtonCallback(GLFWwindow *glfwWindow, int button, int action, int mods) {
-	if (button >= AUTOMATA_INPUT_MOUSE_AXES_AMOUNT) {
+	if (button < 0 || button >= AUTOMATA_INPUT_MOUSE_AXES_AMOUNT) {
 		return;
 	}
 	
@@ -123,6 +128,7 @@ void automataInputInit(GLFWwindow *window) {
 	
 	/* add callbacks to window */
 	glfwSetKeyCallback(window, automataInputKeyboardKeyCallback);
+	glfwSetScrollCallback(window, AutomataInputMouseScrollCallback);
 	glfwSetMouseButtonCallback(window, automataInputMouseButtonCallback);
 	glfwSetCursorPosCallback(window, automataInputMousePositionCallback);
 	glfwSetJoystickCallback(automataInputGamepadConnectedCallback);
