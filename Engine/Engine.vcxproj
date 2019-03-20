@@ -70,26 +70,26 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\libs;$(LibraryPath)</LibraryPath>
-    <IncludePath>D:\Projects\Git\automata\Dependencies\glad-14.03.2019\include;D:\Projects\Git\automata\Dependencies\stb-14.03.2019\include;D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\libs\;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Projects\Git\automata\Dependencies\glad-14.03.2019\include\;D:\Projects\Git\automata\Dependencies\stb-14.03.2019\include\;D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\include\;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\Build\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\Build\Intermediate\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LibraryPath>D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\libs;$(LibraryPath)</LibraryPath>
-    <IncludePath>D:\Projects\Git\automata\Dependencies\glad-14.03.2019\include;D:\Projects\Git\automata\Dependencies\stb-14.03.2019\include;D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\libs\;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Projects\Git\automata\Dependencies\glad-14.03.2019\include\;D:\Projects\Git\automata\Dependencies\stb-14.03.2019\include\;D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\include\;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\Build\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\Build\Intermediate\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LibraryPath>D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\libs;$(LibraryPath)</LibraryPath>
-    <IncludePath>D:\Projects\Git\automata\Dependencies\glad-14.03.2019\include;D:\Projects\Git\automata\Dependencies\stb-14.03.2019\include;D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\libs\;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Projects\Git\automata\Dependencies\glad-14.03.2019\include\;D:\Projects\Git\automata\Dependencies\stb-14.03.2019\include\;D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\include\;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\Build\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\Build\Intermediate\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LibraryPath>D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\libs;$(LibraryPath)</LibraryPath>
-    <IncludePath>D:\Projects\Git\automata\Dependencies\glad-14.03.2019\include;D:\Projects\Git\automata\Dependencies\stb-14.03.2019\include;D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\libs\;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\Projects\Git\automata\Dependencies\glad-14.03.2019\include\;D:\Projects\Git\automata\Dependencies\stb-14.03.2019\include\;D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\include\;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\Build\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\Build\Intermediate\</IntDir>
   </PropertyGroup>
@@ -146,10 +146,12 @@
   <ItemGroup>
     <ClCompile Include="..\Dependencies\glad-14.03.2019\src\glad.c" />
     <ClCompile Include="automata_engine.c" />
+    <ClCompile Include="automata_image.c" />
     <ClCompile Include="automata_input.c" />
     <ClCompile Include="automata_window.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="automata_image.h" />
     <ClInclude Include="automata_input.h" />
     <ClInclude Include="automata_window.h" />
   </ItemGroup>
