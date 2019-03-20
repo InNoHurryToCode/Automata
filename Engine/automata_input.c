@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <glfw/glfw3.h>
 #include "automata_input.h"
 
@@ -129,6 +128,7 @@ void automataInputGamepadAxisCalback() {
 			}
 		}
 
+		axis = 0;
 		++gamepad;
 	}
 }
@@ -146,17 +146,21 @@ void automataInputGamepadButtonCallback() {
 		if (automataInputGetGamepadState(gamepad)) {
 			gamepadButtons = glfwGetJoystickButtons(gamepad, &buttonsCount);
 
+			/* register all button values */			
 			while (button < AUTOMATA_INPUT_GAMEPAD_BUTTONS_AMOUNT) {
 				if (button >= buttonsCount) {
-					keys[button + segment + 1] = 0;
+					/* button doesn't exist */
+					keys[button + segment] = 0;
 				} else {
-					keys[button + segment + 1] = gamepadButtons[button];
+					/* button exists */
+					keys[button + segment] = gamepadButtons[button];
 				}
 
 				++button;
 			}
 		}
 
+		button = 0;
 		++gamepad;
 	}
 }
