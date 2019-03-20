@@ -1,4 +1,3 @@
-#include <glfw/glfw3.h>
 #include "automata_input.h"
 
 static char keys[AUTOMATA_INPUT_KEYS_AMOUNT] = { 0 };
