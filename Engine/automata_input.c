@@ -5,7 +5,7 @@ static double axes[AUTOMATA_INPUT_AXES_AMOUNT] = { 0.0 };
 static char gamepads[AUTOMATA_INPUT_GAMEPADS_AMOUNT] = { 0 };
 
 static void automataInputKeyboardKeyCallback(GLFWwindow *glfwWindow, int key, int scancode, int action, int mods) {
-	if (key == AUTOMATA_KEY_UNKNOWN) {
+	if (key == AUTOMATA_KEY_UNKNOWN || key > AUTOMATA_INPUT_LAST_KEYBOARD_KEY) {
 		return;
 	}
 	
@@ -18,6 +18,10 @@ static void automataInputKeyboardKeyCallback(GLFWwindow *glfwWindow, int key, in
 }
 
 static void automataInputMouseButtonCallback(GLFWwindow *glfwWindow, int button, int action, int mods) {
+	if (button >= AUTOMATA_INPUT_MOUSE_AXES_AMOUNT) {
+		return;
+	}
+	
 	/* register keyboard key state */
 	if (action == GLFW_PRESS) {
 		keys[button + (AUTOMATA_INPUT_LAST_KEYBOARD_KEY + 1)] = 1;
@@ -40,15 +44,21 @@ static void automataInputGamepadAxisCalback() {
 	float *gamepadAxes = NULL;
 
 	while (gamepad <= AUTOMATA_INPUT_LAST_GAMEPAD) {
+		/* get gamepad button segment */
 		segment = gamepad * AUTOMATA_INPUT_GAMEPAD_AXES_AMOUNT + AUTOMATA_INPUT_LAST_MOUSE_AXIS + 1;
 
+		/* check gamepad state */
 		if (automataInputGetGamepadState(gamepad)) {
+			/* get gamepad axes */
 			gamepadAxes = glfwGetJoystickAxes(gamepad, &axesCount);
 
+			/* register all axes values */
 			while (axis < AUTOMATA_INPUT_GAMEPAD_AXES_AMOUNT) {
 				if (axis >= axesCount) {
+					/* axis doesn't exist */
 					axes[axis + segment] = 0.0;
 				} else {
+					/* axis exists */
 					axes[axis + segment] = gamepadAxes[axis];
 				}
 
@@ -69,9 +79,12 @@ static void automataInputGamepadButtonCallback() {
 	unsigned char *gamepadButtons = NULL;
 
 	while (gamepad <= AUTOMATA_INPUT_LAST_GAMEPAD) {
+		/* get gamepad button segment */
 		segment = gamepad * AUTOMATA_INPUT_GAMEPAD_BUTTONS_AMOUNT + AUTOMATA_INPUT_LAST_MOUSE_BUTTON + 1;
 
+		/* check gamepad state */
 		if (automataInputGetGamepadState(gamepad)) {
+			/* get gamepad buttons */
 			gamepadButtons = glfwGetJoystickButtons(gamepad, &buttonsCount);
 
 			/* register all button values */			
@@ -104,6 +117,11 @@ void automataInputGamepadConnectedCallback(int joy, int event) {
 }
 
 void automataInputInit(GLFWwindow *window) {
+	if (!window) {
+		return;
+	}
+	
+	/* add callbacks to window */
 	glfwSetKeyCallback(window, automataInputKeyboardKeyCallback);
 	glfwSetMouseButtonCallback(window, automataInputMouseButtonCallback);
 	glfwSetCursorPosCallback(window, automataInputMousePositionCallback);
@@ -111,6 +129,7 @@ void automataInputInit(GLFWwindow *window) {
 }
 
 void automataInputUpdate() {
+	/* call manual callbacks */
 	automataInputGamepadButtonCallback();
 	automataInputGamepadAxisCalback();
 }
@@ -164,7 +183,7 @@ double automataInputGetAxis(AutomataInputAxis axis) {
 }
 
 int automataInputGetGamepadState(AutomataInputGamepad gamepad) {
-	if (gamepad >= AUTOMATA_INPUT_GAMEPADS_AMOUNT) {
+	if (gamepad < 0 || gamepad >= AUTOMATA_INPUT_GAMEPADS_AMOUNT) {
 		return -1;
 	}
 
@@ -173,10 +192,10 @@ int automataInputGetGamepadState(AutomataInputGamepad gamepad) {
 }
 
 const char* automataInputGetGamepadName(AutomataInputGamepad gamepad) {
-	if (gamepad >= AUTOMATA_INPUT_GAMEPADS_AMOUNT) {
+	if (gamepad < 0 || gamepad >= AUTOMATA_INPUT_GAMEPADS_AMOUNT) {
 		return NULL;
 	}
 
-	/* get gamepad state */
+	/* get gamepad name */
 	return glfwGetJoystickName(gamepad);
 }
