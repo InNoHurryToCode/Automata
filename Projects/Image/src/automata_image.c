@@ -1,7 +1,8 @@
 #define STB_IMAGE_IMPLEMENTATION
-#include <stdio.h>
+
+#include <stdlib.h>
 #include <stb/stb_image.h>
-#include "automata_image.h"
+#include "../include/automata/automata_image.h"
 
 AutomataImage *automataImageLoad(const char *filePath) {
 	AutomataImage *image = malloc(sizeof(AutomataImage *));
@@ -15,6 +16,8 @@ AutomataImage *automataImageLoad(const char *filePath) {
 	if (!image->pixels) {
 		return NULL;
 	}
+
+	return image;
 }
 
 void automataImageUnload(AutomataImage *image) {

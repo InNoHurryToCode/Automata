@@ -1,6 +1,6 @@
 #include <stdlib.h>
-#include "automata_input.h"
-#include "automata_window.h"
+#include <automata\automata_input.h>
+#include <automata\automata_window.h>
 
 int main() {
 	/* intialize application */

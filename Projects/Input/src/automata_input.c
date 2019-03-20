@@ -1,4 +1,4 @@
-#include "automata_input.h"
+#include "../include/automata/automata_input.h"
 
 static char keys[AUTOMATA_INPUT_KEYS_AMOUNT] = { 0 };
 static double axes[AUTOMATA_INPUT_AXES_AMOUNT] = { 0.0 };

@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <glad/glad.h>
-#include "automata_window.h"
+#include "../include/automata/automata_window.h"
 
 static GLFWwindow *window = NULL;
 static AutomataWindowMode windowMode;

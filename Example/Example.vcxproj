@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{AF78F19E-5435-489C-8F50-5E2482982B5A}</ProjectGuid>
-    <RootNamespace>Engine</RootNamespace>
+    <ProjectGuid>{46167FED-569D-4C8B-BA27-D803F767921D}</ProjectGuid>
+    <RootNamespace>Example</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -42,14 +42,14 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -70,49 +70,47 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\libs\;$(LibraryPath)</LibraryPath>
-    <IncludePath>D:\Projects\Git\automata\Dependencies\glad-14.03.2019\include\;D:\Projects\Git\automata\Dependencies\stb-14.03.2019\include\;D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\include\;$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)\Build\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\Build\Intermediate\</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LibraryPath>D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\libs\;$(LibraryPath)</LibraryPath>
-    <IncludePath>D:\Projects\Git\automata\Dependencies\glad-14.03.2019\include\;D:\Projects\Git\automata\Dependencies\stb-14.03.2019\include\;D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\include\;$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)\Build\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\Build\Intermediate\</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LibraryPath>D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\libs\;$(LibraryPath)</LibraryPath>
-    <IncludePath>D:\Projects\Git\automata\Dependencies\glad-14.03.2019\include\;D:\Projects\Git\automata\Dependencies\stb-14.03.2019\include\;D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\include\;$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)\Build\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\Build\Intermediate\</IntDir>
+    <OutDir>$(ProjectDir)App\</OutDir>
+    <IncludePath>$(SolutionDir)Projects\Window\include;$(SolutionDir)Projects\Input\include;$(SolutionDir)Projects\Image\include;$(SolutionDir)Dependencies\glfw-14.03.2019\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Projects\Window\libs;$(SolutionDir)Projects\Input\libs;$(SolutionDir)Projects\Image\libs;$(SolutionDir)Dependencies\glfw-14.03.2019\libs;$(LibraryPath)</LibraryPath>
+    <IntDir>$(SolutionDir)Build\Intermediate\$(SolutionName)$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LibraryPath>D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\libs\;$(LibraryPath)</LibraryPath>
-    <IncludePath>D:\Projects\Git\automata\Dependencies\glad-14.03.2019\include\;D:\Projects\Git\automata\Dependencies\stb-14.03.2019\include\;D:\Projects\Git\automata\Dependencies\glfw-14.03.2019\include\;$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)\Build\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)\Build\Intermediate\</IntDir>
+    <OutDir>$(ProjectDir)App\</OutDir>
+    <IncludePath>$(SolutionDir)Projects\Window\include;$(SolutionDir)Projects\Input\include;$(SolutionDir)Projects\Image\include;$(SolutionDir)Dependencies\glfw-14.03.2019\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Projects\Window\libs;$(SolutionDir)Projects\Input\libs;$(SolutionDir)Projects\Image\libs;$(SolutionDir)Dependencies\glfw-14.03.2019\libs;$(LibraryPath)</LibraryPath>
+    <IntDir>$(SolutionDir)Build\Intermediate\$(SolutionName)$(ProjectName)\</IntDir>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-    </ClCompile>
-    <Link />
-    <Link>
-      <AdditionalDependencies>opengl32.lib;glfw3_x32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
-  </ItemDefinitionGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(ProjectDir)App\</OutDir>
+    <IntDir>$(SolutionDir)Build\Intermediate\$(SolutionName)$(ProjectName)\</IntDir>
+    <IncludePath>$(SolutionDir)Projects\Window\include;$(SolutionDir)Projects\Input\include;$(SolutionDir)Projects\Image\include;$(SolutionDir)Dependencies\glfw-14.03.2019\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Projects\Window\libs;$(SolutionDir)Projects\Input\libs;$(SolutionDir)Projects\Image\libs;$(SolutionDir)Dependencies\glfw-14.03.2019\libs;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(ProjectDir)App\</OutDir>
+    <IntDir>$(SolutionDir)Build\Intermediate\$(SolutionName)$(ProjectName)\</IntDir>
+    <IncludePath>$(SolutionDir)Projects\Window\include;$(SolutionDir)Projects\Input\include;$(SolutionDir)Projects\Image\include;$(SolutionDir)Dependencies\glfw-14.03.2019\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Projects\Window\libs;$(SolutionDir)Projects\Input\libs;$(SolutionDir)Projects\Image\libs;$(SolutionDir)Dependencies\glfw-14.03.2019\libs;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
-    <Link />
     <Link>
-      <AdditionalDependencies>opengl32.lib;glfw3_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3_x64.lib;AutomataImage_x64.lib;AutomataInput_x64.lib;AutomataWindow_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>glfw3_x86.lib;AutomataImage_x86.lib;AutomataInput_x86.lib;AutomataWindow_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -126,7 +124,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;glfw3_x32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3_x86.lib;AutomataImage_x86.lib;AutomataInput_x86.lib;AutomataWindow_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,20 +138,11 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;glfw3_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3_x64.lib;AutomataImage_x64.lib;AutomataInput_x64.lib;AutomataWindow_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Dependencies\glad-14.03.2019\src\glad.c" />
-    <ClCompile Include="automata_engine.c" />
-    <ClCompile Include="automata_image.c" />
-    <ClCompile Include="automata_input.c" />
-    <ClCompile Include="automata_window.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="automata_image.h" />
-    <ClInclude Include="automata_input.h" />
-    <ClInclude Include="automata_window.h" />
+    <ClCompile Include="src\app.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
