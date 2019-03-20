@@ -6,6 +6,7 @@ int main() {
 	/* intialize application */
 	automataWindowInit();
 	automataWindowCreate(1280, 720, "Automata Engine");
+	automataInputInit(automataWindowGetWindow());
 
 	/* application loop */
 	while (automataWindowIsAlive()) {

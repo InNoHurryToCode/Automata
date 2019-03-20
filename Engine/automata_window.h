@@ -30,8 +30,6 @@ AutomataWindowMode automataWindowGetMode();
 void automataWindowSetTitle(const char *title);
 void automataWindowSetSize(unsigned int width, unsigned int height);
 void automataWindowSetMode(AutomataWindowMode mode);
-
-/* callbacks */
-void automataWindowCallbackResize(GLFWwindow *glfwWindow, int width, int height);
+GLFWwindow *automataWindowGetWindow();
 
 #endif

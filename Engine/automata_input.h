@@ -592,18 +592,11 @@ typedef enum AutomataInputGamepad {
 } AutomataInputGamepad;
 
 /* functions */
+void automataInputInit(GLFWwindow *window);
+void automataInputUpdate();
 int automataInputGetKey(AutomataInputKey key);
 int automataInputGetAnyKey();
 AutomataInputKey automataInputDetectKey();
 double automataInputGetAxis(AutomataInputAxis axis);
-
-/* callbacks */
-void automataInputUpdate();
-void automataInputKeyboardKeyCallback(GLFWwindow *glfwWindow, int key, int scancode, int action, int mods);
-void automataInputMouseButtonCallback(GLFWwindow *glfwWindow, int button, int action, int mods);
-void automataInputMousePositionCallback(GLFWwindow *glfwWindow, double xpos, double ypos);
-void automataInputGamepadAxisCalback();
-void automataInputGamepadButtonCallback();
-void automataInputGamepadConnectedCallback(int joy, int event);
 
 #endif

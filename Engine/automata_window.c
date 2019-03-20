@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <glad/glad.h>
-#include "automata_input.h"
 #include "automata_window.h"
 
 struct AutomataWindow {
@@ -12,6 +11,19 @@ struct AutomataWindow {
 } AutomataWindow;
 
 static struct AutomataWindow window = { 0 };
+
+static void automataWindowCallbackResize(GLFWwindow *glfwWindow, int width, int height) {
+	if (!window.window) {
+		return;
+	}
+
+	/* set window size */
+	window.width = (unsigned int)width;
+	window.height = (unsigned int)height;
+
+	/* apply window size to OpenGL context */
+	glViewport(0, 0, width, height);
+}
 
 void automataWindowInit() {
 	/* initialize GLFW */
@@ -50,10 +62,6 @@ void automataWindowCreate(unsigned int width, unsigned int height, const char *t
 
 	/* set window callback */
 	glfwSetFramebufferSizeCallback(window.window, automataWindowCallbackResize);
-	glfwSetKeyCallback(window.window, automataInputKeyboardKeyCallback);
-	glfwSetMouseButtonCallback(window.window, automataInputMouseButtonCallback);
-	glfwSetCursorPosCallback(window.window, automataInputMousePositionCallback);
-	glfwSetJoystickCallback(automataInputGamepadConnectedCallback);
 }
 
 void automataWindowClose() {
@@ -193,15 +201,6 @@ void automataWindowSetMode(AutomataWindowMode mode) {
 	}
 }
 
-void automataWindowCallbackResize(GLFWwindow *glfwWindow, int width, int height) {
-	if (!window.window) {
-		return;
-	}
-
-	/* set window size */
-	window.width = (unsigned int)width;
-	window.height = (unsigned int)height;
-
-	/* apply window size to OpenGL context */
-	glViewport(0, 0, width, height);
+GLFWwindow *automataWindowGetWindow() {
+	return window.window;
 }
