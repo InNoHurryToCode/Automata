@@ -598,5 +598,7 @@ int automataInputGetKey(AutomataInputKey key);
 int automataInputGetAnyKey();
 AutomataInputKey automataInputDetectKey();
 double automataInputGetAxis(AutomataInputAxis axis);
+int automataInputGetGamepadState(AutomataInputGamepad gamepad);
+const char* automataInputGetGamepadName(AutomataInputGamepad gamepad);
 
 #endif
