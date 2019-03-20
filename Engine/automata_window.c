@@ -2,24 +2,13 @@
 #include <glad/glad.h>
 #include "automata_window.h"
 
-struct AutomataWindow {
-	GLFWwindow *window;
-	unsigned int width;
-	unsigned int height;
-	const char *title;
-	AutomataWindowMode mode;
-} AutomataWindow;
-
-static struct AutomataWindow window = { 0 };
+static GLFWwindow *window = NULL;
+static AutomataWindowMode windowMode;
 
 static void automataWindowCallbackResize(GLFWwindow *glfwWindow, int width, int height) {
-	if (!window.window) {
+	if (!window) {
 		return;
 	}
-
-	/* set window size */
-	window.width = (unsigned int)width;
-	window.height = (unsigned int)height;
 
 	/* apply window size to OpenGL context */
 	glViewport(0, 0, width, height);
@@ -37,19 +26,20 @@ void automataWindowInit() {
 }
 
 void automataWindowCreate(unsigned int width, unsigned int height, const char *title) {		
+	if (window) {
+		return;
+	}
+	
 	/* create window */
-	window.width = width;
-	window.height = height;
-	window.title = title;
-	window.window = glfwCreateWindow(width, height, title, NULL, NULL);
+	window = glfwCreateWindow(width, height, title, NULL, NULL);
 
-	if (!window.window) {
+	if (!window) {
 		automataWindowTerminate();
 		return;
 	}
 
 	/* make window context */
-	glfwMakeContextCurrent(window.window);
+	glfwMakeContextCurrent(window);
 
 	/* check if OpenGL context is initialized */
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -58,19 +48,19 @@ void automataWindowCreate(unsigned int width, unsigned int height, const char *t
 	}
 
 	/* set window viewport */
-	glViewport(0, 0, window.width, window.height);
+	glViewport(0, 0, width, height);
 
 	/* set window callback */
-	glfwSetFramebufferSizeCallback(window.window, automataWindowCallbackResize);
+	glfwSetFramebufferSizeCallback(window, automataWindowCallbackResize);
 }
 
 void automataWindowClose() {
-	if (!window.window) {
+	if (!window) {
 		return;
 	}
 
 	/* close the window */
-	glfwSetWindowShouldClose(window.window, 1);
+	glfwSetWindowShouldClose(window, 1);
 }
 
 void automataWindowTerminate() {
@@ -79,16 +69,16 @@ void automataWindowTerminate() {
 }
 
 int automataWindowIsAlive() {
-	if (!window.window) {
+	if (!window) {
 		return 0;
 	}
 
 	/* get if window is active */
-	return !glfwWindowShouldClose(window.window);
+	return !glfwWindowShouldClose(window);
 }
 
 void automataWindowUpdate() {
-	if (!window.window) {
+	if (!window) {
 		return;
 	}
 
@@ -97,71 +87,66 @@ void automataWindowUpdate() {
 }
 
 void automataWindowSwapBuffers() {
-	if (!window.window) {
+	if (!window) {
 		return;
 	}
 
 	/* swap buffers */
-	glfwSwapBuffers(window.window);
+	glfwSwapBuffers(window);
 }
 
 unsigned int automataWindowGetWidth() {
-	if (!window.window) {
+	int width = 0;
+	int height = 0;
+	
+	if (!window) {
 		return 0;
 	}
 	
 	/* get window width */
-	return window.width;
+	glfwGetWindowSize(window, &width, &height);
+
+	return width;
 }
 
 unsigned int automataWindowGetHeight() {
-	if (!window.window) {
+	int width = 0;
+	int height = 0;
+
+	if (!window) {
 		return 0;
 	}
-	
-	/* get window height */
-	return window.height;
-}
 
-const char *automataWindowGetTitle() {
-	if (!window.window) {
-		return NULL;
-	}
-	
-	/* get window title */
-	return window.title;
+	/* get window width */
+	glfwGetWindowSize(window, &width, &height);
+
+	return height;
 }
 
 AutomataWindowMode automataWindowGetMode() {
-	if (!window.window) {
+	if (!window) {
 		return AUTOMATA_WINDOW_MODE_UNKNOWN;
 	}
 	
-	return window.mode;
+	return windowMode;
 }
 
 void automataWindowSetTitle(const char *title) {
-	if (!window.window) {
+	if (!window) {
 		return;
 	}
 	
 	/* set window title */
-	window.title = title;
-
-	glfwSetWindowTitle(window.window, title);
+	glfwSetWindowTitle(window, title);
 }
 
 void automataWindowSetSize(unsigned int width, unsigned int height) {
-	if (!window.window) {
+	if (!window) {
 		return;
 	}
 
-	/* set window size */
-	window.width = width;
-	window.height = height;
-
 	/* apply window size to window */
-	glfwSetWindowSize(window.window, (int)width, (int)height);
+	glfwSetWindowSize(window, (int)width, (int)height);
 }
 
 void automataWindowSetMode(AutomataWindowMode mode) {
@@ -169,38 +154,32 @@ void automataWindowSetMode(AutomataWindowMode mode) {
 	GLFWmonitor *monitor = glfwGetPrimaryMonitor();
 	const GLFWvidmode *videoMode = glfwGetVideoMode(monitor);
 
-	if (!window.window || mode == window.mode) {
+	if (!window || mode == windowMode || mode == AUTOMATA_WINDOW_MODE_UNKNOWN) {
 		return;
 	}
 
-	/* set window mode */
-	window.mode = mode;
-	
+	/* set window mode */	
 	switch (mode) {
 	case AUTOMATA_WINDOW_MODE_WINDOWED:
-		glfwSetWindowMonitor(window.window, NULL, 0, 0, window.width, window.height, GLFW_DONT_CARE);
+		glfwSetWindowMonitor(window, NULL, 0, 0, automataWindowGetWidth(), automataWindowGetHeight(), GLFW_DONT_CARE);
 		break;
 
 	case AUTOMATA_WINDOW_MODE_FULLSCREEN:
-		glfwSetWindowMonitor(window.window, monitor, 0, 0, window.width, window.height, GLFW_DONT_CARE);
+		glfwSetWindowMonitor(window, monitor, 0, 0, automataWindowGetWidth(), automataWindowGetHeight(), GLFW_DONT_CARE);
 		break;
 
 	case AUTOMATA_WINDOW_MODE_BORDERLESS:
-		glfwSetWindowMonitor(window.window, monitor, 0, 0, videoMode->width, videoMode->height, videoMode->refreshRate);
+		glfwSetWindowMonitor(window, monitor, 0, 0, videoMode->width, videoMode->height, videoMode->refreshRate);
 		break;
 
 	default:
 		/* window mode doesn't exist */
-		window.mode = AUTOMATA_WINDOW_MODE_UNKNOWN;
-		return;
+		break;
 	}
 
-	if (window.mode == AUTOMATA_WINDOW_MODE_UNKNOWN) {
-		automataWindowTerminate();
-		return;
-	}
+	windowMode = mode;
 }
 
 GLFWwindow *automataWindowGetWindow() {
-	return window.window;
+	return window;
 }
