@@ -183,3 +183,23 @@ void automataWindowSetMode(AutomataWindowMode mode) {
 GLFWwindow *automataWindowGetWindow() {
 	return window;
 }
+
+void automataWindowSetIcon(int width, int height, unsigned char pixels) {
+	if (!pixels) {
+		return;
+	}
+
+	/* get image */
+	GLFWimage image = { 0 };
+	image.width = width;
+	image.height = height;
+	image.pixels = pixels;
+
+	/* set the window icon */
+	glfwSetWindowIcon(window, 0, &image);
+}
+
+void automataWindowRemoveIcon() {
+	/* reset icon to OS default */
+	glfwSetWindowIcon(window, 0, NULL);
+}

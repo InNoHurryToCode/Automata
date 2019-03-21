@@ -30,5 +30,7 @@ void automataWindowSetTitle(const char *title);
 void automataWindowSetSize(unsigned int width, unsigned int height);
 void automataWindowSetMode(AutomataWindowMode mode);
 GLFWwindow *automataWindowGetWindow();
+void automataWindowSetIcon(int width, int height, unsigned char pixels);
+void automataWindowRemoveIcon();
 
 #endif
