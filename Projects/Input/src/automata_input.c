@@ -1,8 +1,12 @@
+#include <stddef.h>
 #include "../include/automata/automata_input.h"
 
 static char keys[AUTOMATA_INPUT_KEYS_AMOUNT] = { 0 };
 static double axes[AUTOMATA_INPUT_AXES_AMOUNT] = { 0.0 };
 static char gamepads[AUTOMATA_INPUT_GAMEPADS_AMOUNT] = { 0 };
+static GLFWcursor* cursor = NULL;
+static int cursorInWindow = 0;
+static GLFWwindow *windowReference = NULL;
 
 static void automataInputKeyboardKeyCallback(GLFWwindow *glfwWindow, int key, int scancode, int action, int mods) {
 	if (key == AUTOMATA_KEY_UNKNOWN || key > AUTOMATA_INPUT_LAST_KEYBOARD_KEY) {
@@ -39,6 +43,15 @@ static void automataInputMousePositionCallback(GLFWwindow *glfwWindow, double xp
 	/* register mouse input */
 	axes[AUTOMATA_AXIS_MOUSE_X] = xpos;
 	axes[AUTOMATA_AXIS_MOUSE_Y] = ypos;
+}
+
+static automataCursorInWindowCallback(GLFWwindow *window, int entered) {
+	/* get mouse in window state */
+	if (entered) {
+		cursorInWindow = 1;
+	} else {
+		cursorInWindow = 0;
+	}
 }
 
 static void automataInputGamepadAxisCalback() {
@@ -111,26 +124,32 @@ static void automataInputGamepadButtonCallback() {
 	}
 }
 
-void automataInputGamepadConnectedCallback(int joy, int event) {
+static void automataInputGamepadConnectedCallback(int joy, int event) {
+	/* gamepad connected */
 	if (event == GLFW_CONNECTED) {
 		gamepads[joy] = 1;
 	}
 
+	/* gamepad disconnected */
 	if (event == GLFW_DISCONNECTED) {
 		gamepads[joy] = 0;
 	}
 }
 
 void automataInputInit(GLFWwindow *window) {
-	if (!window) {
+	if (!window || windowReference) {
 		return;
 	}
 	
+	/* store window reference */
+	windowReference = window;
+
 	/* add callbacks to window */
 	glfwSetKeyCallback(window, automataInputKeyboardKeyCallback);
 	glfwSetScrollCallback(window, AutomataInputMouseScrollCallback);
 	glfwSetMouseButtonCallback(window, automataInputMouseButtonCallback);
 	glfwSetCursorPosCallback(window, automataInputMousePositionCallback);
+	glfwSetCursorEnterCallback(window, automataCursorInWindowCallback);
 	glfwSetJoystickCallback(automataInputGamepadConnectedCallback);
 }
 
@@ -204,4 +223,42 @@ const char* automataInputGetGamepadName(AutomataInputGamepad gamepad) {
 
 	/* get gamepad name */
 	return glfwGetJoystickName(gamepad);
+}
+
+int automataInputGetCursorInWindow() {
+	/* get if cursor is in the window */
+	return cursorInWindow;
+}
+
+void automataInputSetCursorVisible(int visible) {
+	if (visible < 0 || visible > 1) {
+		return;
+	}
+
+	/* set cursor visibility */
+	if (visible) {
+		glfwSetInputMode(windowReference, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+	} else {
+		glfwSetInputMode(windowReference, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+	}
+}
+
+void automataInputSetCursorIcon(int width, int height, unsigned char *pixels) {
+	if (!pixels) {
+		return;
+	}
+	
+	/* get image */
+	GLFWimage image = { 0 };
+	image.width = width;
+	image.height = height;
+	image.pixels = pixels;
+
+	/* set image to cursor */
+	cursor = glfwCreateCursor(&image, 0, 0);
+}
+
+void automataInputRemoveCursorIcon() {
+	/* reset cursor to OS default */
+	cursor = glfwCreateStandardCursor(GLFW_HRESIZE_CURSOR);
 }

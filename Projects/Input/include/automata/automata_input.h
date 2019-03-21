@@ -633,5 +633,8 @@ AutomataInputKey automataInputDetectKey();
 double automataInputGetAxis(AutomataInputAxis axis);
 int automataInputGetGamepadState(AutomataInputGamepad gamepad);
 const char* automataInputGetGamepadName(AutomataInputGamepad gamepad);
+void automataInputSetCursorVisible(int visible);
+void automataInputSetCursorIcon(int width, int height, unsigned char *pixels);
+void automataInputRemoveCursorIcon();
 
 #endif
