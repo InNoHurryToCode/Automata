@@ -243,7 +243,7 @@ void automataInputSetCursorVisible(int visible) {
 	}
 }
 
-void automataInputSetCursorIcon(int width, int height, unsigned char *pixels) {
+void automataInputSetCursorIcon(int width, int height, unsigned char pixels) {
 	if (!pixels) {
 		return;
 	}
@@ -254,7 +254,7 @@ void automataInputSetCursorIcon(int width, int height, unsigned char *pixels) {
 	image.height = height;
 	image.pixels = pixels;
 
-	/* set image to cursor */
+	/* set the curser icon */
 	cursor = glfwCreateCursor(&image, 0, 0);
 }
 
