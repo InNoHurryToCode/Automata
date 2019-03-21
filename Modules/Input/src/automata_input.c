@@ -59,7 +59,7 @@ static void automataInputGamepadAxisCalback() {
 	int axis = 0;
 	int segment = 0;
 	int axesCount = 0;
-	float *gamepadAxes = NULL;
+	const float *gamepadAxes = NULL;
 
 	while (gamepad <= AUTOMATA_INPUT_LAST_GAMEPAD) {
 		/* get gamepad button segment */
@@ -94,7 +94,7 @@ static void automataInputGamepadButtonCallback() {
 	int button = 0;
 	int segment = 0;
 	int buttonsCount = 0;
-	unsigned char *gamepadButtons = NULL;
+	const unsigned char *gamepadButtons = NULL;
 
 	while (gamepad <= AUTOMATA_INPUT_LAST_GAMEPAD) {
 		/* get gamepad button segment */
