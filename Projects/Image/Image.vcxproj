@@ -73,25 +73,25 @@
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(SolutionDir)Build\Intermediate\$(SolutionName)$(ProjectName)\</IntDir>
     <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
-    <IncludePath>$(SolutionDir)Dependencies\stb-14.03.2019;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\stb;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(SolutionDir)Build\Intermediate\$(SolutionName)$(ProjectName)\</IntDir>
     <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
-    <IncludePath>$(SolutionDir)Dependencies\stb-14.03.2019;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\stb;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(SolutionDir)Build\Intermediate\$(SolutionName)$(ProjectName)\</IntDir>
     <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
-    <IncludePath>$(SolutionDir)Dependencies\stb-14.03.2019;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\stb;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(SolutionDir)Build\Intermediate\$(SolutionName)$(ProjectName)\</IntDir>
     <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
-    <IncludePath>$(SolutionDir)Dependencies\stb-14.03.2019;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\stb;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glad", "Dependencies\glad-14.03.2019\Glad.vcxproj", "{DF36892C-B103-4168-93DB-DDE5F78D843E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glad", "Dependencies\glad\glad.vcxproj", "{DF36892C-B103-4168-93DB-DDE5F78D843E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Image", "Projects\Image\Image.vcxproj", "{BCE3C552-AC8C-42DA-8F15-7EF56C4D1AAF}"
 EndProject

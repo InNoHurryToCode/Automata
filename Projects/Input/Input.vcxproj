@@ -73,29 +73,29 @@
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(SolutionDir)Build\Intermediate\$(SolutionName)$(ProjectName)\</IntDir>
     <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
-    <IncludePath>$(SolutionDir)Dependencies\glfw-14.03.2019\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Dependencies\glfw-14.03.2019\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(SolutionDir)Build\Intermediate\$(SolutionName)$(ProjectName)\</IntDir>
     <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
-    <IncludePath>$(SolutionDir)Dependencies\glfw-14.03.2019\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Dependencies\glfw-14.03.2019\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(SolutionDir)Build\Intermediate\$(SolutionName)$(ProjectName)\</IntDir>
     <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
-    <IncludePath>$(SolutionDir)Dependencies\glfw-14.03.2019\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Dependencies\glfw-14.03.2019\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(SolutionDir)Build\Intermediate\$(SolutionName)$(ProjectName)\</IntDir>
     <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
-    <IncludePath>$(SolutionDir)Dependencies\glfw-14.03.2019\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Dependencies\glfw-14.03.2019\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

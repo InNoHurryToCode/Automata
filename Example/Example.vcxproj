@@ -71,27 +71,27 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(ProjectDir)App\</OutDir>
-    <IncludePath>$(SolutionDir)Projects\Window\include;$(SolutionDir)Projects\Input\include;$(SolutionDir)Projects\Image\include;$(SolutionDir)Dependencies\glfw-14.03.2019\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Projects\Window\libs;$(SolutionDir)Projects\Input\libs;$(SolutionDir)Projects\Image\libs;$(SolutionDir)Dependencies\glfw-14.03.2019\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Projects\Window\include;$(SolutionDir)Projects\Input\include;$(SolutionDir)Projects\Image\include;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Projects\Window\libs;$(SolutionDir)Projects\Input\libs;$(SolutionDir)Projects\Image\libs;$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
     <IntDir>$(SolutionDir)Build\Intermediate\$(SolutionName)$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(ProjectDir)App\</OutDir>
-    <IncludePath>$(SolutionDir)Projects\Window\include;$(SolutionDir)Projects\Input\include;$(SolutionDir)Projects\Image\include;$(SolutionDir)Dependencies\glfw-14.03.2019\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Projects\Window\libs;$(SolutionDir)Projects\Input\libs;$(SolutionDir)Projects\Image\libs;$(SolutionDir)Dependencies\glfw-14.03.2019\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Projects\Window\include;$(SolutionDir)Projects\Input\include;$(SolutionDir)Projects\Image\include;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Projects\Window\libs;$(SolutionDir)Projects\Input\libs;$(SolutionDir)Projects\Image\libs;$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
     <IntDir>$(SolutionDir)Build\Intermediate\$(SolutionName)$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(ProjectDir)App\</OutDir>
     <IntDir>$(SolutionDir)Build\Intermediate\$(SolutionName)$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)Projects\Window\include;$(SolutionDir)Projects\Input\include;$(SolutionDir)Projects\Image\include;$(SolutionDir)Dependencies\glfw-14.03.2019\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Projects\Window\libs;$(SolutionDir)Projects\Input\libs;$(SolutionDir)Projects\Image\libs;$(SolutionDir)Dependencies\glfw-14.03.2019\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Projects\Window\include;$(SolutionDir)Projects\Input\include;$(SolutionDir)Projects\Image\include;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Projects\Window\libs;$(SolutionDir)Projects\Input\libs;$(SolutionDir)Projects\Image\libs;$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(ProjectDir)App\</OutDir>
     <IntDir>$(SolutionDir)Build\Intermediate\$(SolutionName)$(ProjectName)\</IntDir>
-    <IncludePath>$(SolutionDir)Projects\Window\include;$(SolutionDir)Projects\Input\include;$(SolutionDir)Projects\Image\include;$(SolutionDir)Dependencies\glfw-14.03.2019\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Projects\Window\libs;$(SolutionDir)Projects\Input\libs;$(SolutionDir)Projects\Image\libs;$(SolutionDir)Dependencies\glfw-14.03.2019\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Projects\Window\include;$(SolutionDir)Projects\Input\include;$(SolutionDir)Projects\Image\include;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Projects\Window\libs;$(SolutionDir)Projects\Input\libs;$(SolutionDir)Projects\Image\libs;$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
