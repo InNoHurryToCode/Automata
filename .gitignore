@@ -333,15 +333,16 @@ ASALocalRun/
 Example/app/
 
 # Project lib directories
-Dependencies/glad/libs/
-Modules/Image/libs/
-Modules/Input/libs/
-Modules/Window/libs/
+dependencies/glad/libs/
+dependencies/glfw/libs/
+modules/image/libs/
+modules/input/libs/
+modules/window/libs/
 
 # Project build directories
-Dependencies/glad/build/
-Example/build/
-Modules/Image/build/
-Modules/Input/build/
-Modules/Window/build/
-*.exe
+dependencies/glad/build/
+dependencies/glfw/build/
+example/build/
+modules/image/build/
+modules/input/build/
+modules/window/build/
