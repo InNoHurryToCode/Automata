@@ -329,11 +329,19 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 
-# Project Directories
-Build/
+# App directory
+Example/app/
+
+# Project lib directories
 Dependencies/glad/libs/
-Examples/App/
-Projects/Image/Libs/
-Projects/Input/Libs/
-Projects/Window/Libs/
+Modules/Image/libs/
+Modules/Input/libs/
+Modules/Window/libs/
+
+# Project build directories
+Dependencies/glad/build/
+Example/build/
+Modules/Image/build/
+Modules/Input/build/
+Modules/Window/build/
 *.exe
