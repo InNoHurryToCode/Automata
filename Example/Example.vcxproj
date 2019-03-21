@@ -70,25 +70,25 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(ProjectDir)App\</OutDir>
+    <OutDir>$(ProjectDir)app\</OutDir>
     <IncludePath>$(SolutionDir)Modules\Window\include;$(SolutionDir)Modules\Input\include;$(SolutionDir)Modules\Image\include;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Modules\Window\libs;$(SolutionDir)Modules\Input\libs;$(SolutionDir)Modules\Image\libs;$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)build\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(ProjectDir)App\</OutDir>
+    <OutDir>$(ProjectDir)app\</OutDir>
     <IncludePath>$(SolutionDir)Modules\Window\include;$(SolutionDir)Modules\Input\include;$(SolutionDir)Modules\Image\include;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Modules\Window\libs;$(SolutionDir)Modules\Input\libs;$(SolutionDir)Modules\Image\libs;$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)build\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(ProjectDir)App\</OutDir>
+    <OutDir>$(ProjectDir)app\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
     <IncludePath>$(SolutionDir)Modules\Window\include;$(SolutionDir)Modules\Input\include;$(SolutionDir)Modules\Image\include;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Modules\Window\libs;$(SolutionDir)Modules\Input\libs;$(SolutionDir)Modules\Image\libs;$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(ProjectDir)App\</OutDir>
+    <OutDir>$(ProjectDir)app\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
     <IncludePath>$(SolutionDir)Modules\Window\include;$(SolutionDir)Modules\Input\include;$(SolutionDir)Modules\Image\include;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Modules\Window\libs;$(SolutionDir)Modules\Input\libs;$(SolutionDir)Modules\Image\libs;$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
