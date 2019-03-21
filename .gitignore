@@ -331,7 +331,7 @@ ASALocalRun/
 
 # Project Directories
 Build/
-Dependencies/glad
+Dependencies/glad/libs/
 Examples/App/
 Projects/Image/Libs/
 Projects/Input/Libs/
