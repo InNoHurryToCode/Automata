@@ -73,25 +73,25 @@
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
     <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
-    <IncludePath>$(SolutionDir)Dependencies\stb;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\stb\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
     <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
-    <IncludePath>$(SolutionDir)Dependencies\stb;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\stb\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
     <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
-    <IncludePath>$(SolutionDir)Dependencies\stb;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\stb\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
     <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
-    <IncludePath>$(SolutionDir)Dependencies\stb;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Dependencies\stb\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
