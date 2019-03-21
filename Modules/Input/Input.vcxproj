@@ -23,6 +23,7 @@
     <ProjectGuid>{D4AD9797-5E90-436C-BC6F-DC951A668D00}</ProjectGuid>
     <RootNamespace>Input</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
+    <ProjectName>input</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -72,28 +73,28 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
-    <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
+    <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformShortName)</TargetName>
     <IncludePath>$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
-    <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
+    <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformShortName)</TargetName>
     <IncludePath>$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
-    <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
+    <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformShortName)</TargetName>
     <IncludePath>$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
-    <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
+    <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformShortName)</TargetName>
     <IncludePath>$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>

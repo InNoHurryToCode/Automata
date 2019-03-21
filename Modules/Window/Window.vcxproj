@@ -23,6 +23,7 @@
     <ProjectGuid>{E2FEE4D4-023B-4EFD-8392-32925938486C}</ProjectGuid>
     <RootNamespace>Window</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
+    <ProjectName>window</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -72,28 +73,28 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
-    <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
+    <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformShortName)</TargetName>
     <IncludePath>$(SolutionDir)Dependencies\glad\include;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Dependencies\glad\libs;$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
-    <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
+    <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformShortName)</TargetName>
     <IncludePath>$(SolutionDir)Dependencies\glad\include;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Dependencies\glad\libs;$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
-    <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
+    <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformShortName)</TargetName>
     <IncludePath>$(SolutionDir)Dependencies\glad\include;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Dependencies\glad\libs;$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
-    <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
+    <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformShortName)</TargetName>
     <IncludePath>$(SolutionDir)Dependencies\glad\include;$(SolutionDir)Dependencies\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Dependencies\glad\libs;$(SolutionDir)Dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>

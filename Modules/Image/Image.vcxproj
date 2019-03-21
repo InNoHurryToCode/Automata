@@ -23,6 +23,7 @@
     <ProjectGuid>{BCE3C552-AC8C-42DA-8F15-7EF56C4D1AAF}</ProjectGuid>
     <RootNamespace>Image</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
+    <ProjectName>image</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -72,25 +73,25 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
-    <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
+    <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformShortName)</TargetName>
     <IncludePath>$(SolutionDir)Dependencies\stb\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
-    <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
+    <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformShortName)</TargetName>
     <IncludePath>$(SolutionDir)Dependencies\stb\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
-    <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
+    <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformShortName)</TargetName>
     <IncludePath>$(SolutionDir)Dependencies\stb\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
-    <TargetName>$(SolutionName)$(ProjectName)_$(PlatformShortName)</TargetName>
+    <TargetName>$(SolutionName)_$(ProjectName)_$(PlatformShortName)</TargetName>
     <IncludePath>$(SolutionDir)Dependencies\stb\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
