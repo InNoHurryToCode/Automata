@@ -16,7 +16,9 @@ static void automataInputKeyboardKeyCallback(GLFWwindow *glfwWindow, int key, in
 	/* register keyboard key state */
 	if (action == GLFW_PRESS) {
 		keys[key] = 1;
-	} else {
+	}
+
+	if (action == GLFW_RELEASE) {
 		keys[key] = 0;
 	}
 }
@@ -31,10 +33,12 @@ static void automataInputMouseButtonCallback(GLFWwindow *glfwWindow, int button,
 		return;
 	}
 	
-	/* register keyboard key state */
+	/* register mouse button state */
 	if (action == GLFW_PRESS) {
 		keys[button + (AUTOMATA_INPUT_LAST_KEYBOARD_KEY + 1)] = 1;
-	} else {
+	}
+
+	if (action == GLFW_RELEASE) {
 		keys[button + (AUTOMATA_INPUT_LAST_KEYBOARD_KEY + 1)] = 0;
 	}
 }
