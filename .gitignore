@@ -342,6 +342,7 @@ modules/window/libs/
 # Project build directories
 dependencies/glad/build/
 dependencies/glfw/build/
+dependencies/stb/build/
 example/build/
 modules/image/build/
 modules/input/build/
