@@ -190,13 +190,13 @@ void automataWindowSetIcon(int width, int height, unsigned char *pixels) {
 	}
 
 	/* get image */
-	GLFWimage image = { 0 };
-	image.width = width;
-	image.height = height;
-	image.pixels = pixels;
+	GLFWimage image[1] = { { 0 } };
+	image[0].width = width;
+	image[0].height = height;
+	image[0].pixels = pixels;
 
 	/* set the window icon */
-	glfwSetWindowIcon(window, 0, &image);
+	glfwSetWindowIcon(window, 1, &image);
 }
 
 void automataWindowRemoveIcon() {
