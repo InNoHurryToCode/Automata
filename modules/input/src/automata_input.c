@@ -247,7 +247,7 @@ void automataInputSetCursorVisible(int visible) {
 	}
 }
 
-void automataInputSetCursorIcon(int width, int height, unsigned char pixels) {
+void automataInputSetCursorIcon(int width, int height, unsigned char *pixels) {
 	if (!pixels) {
 		return;
 	}

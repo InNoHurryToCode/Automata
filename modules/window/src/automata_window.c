@@ -184,7 +184,7 @@ GLFWwindow *automataWindowGetWindow() {
 	return window;
 }
 
-void automataWindowSetIcon(int width, int height, unsigned char pixels) {
+void automataWindowSetIcon(int width, int height, unsigned char *pixels) {
 	if (!pixels) {
 		return;
 	}
