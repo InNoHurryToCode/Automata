@@ -141,7 +141,9 @@ void automataWindowSetTitle(const char *title) {
 }
 
 void automataWindowSetSize(unsigned int width, unsigned int height) {
-	if (!window) {
+	const GLFWvidmode *videoMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+	
+	if (!window || ! videoMode || width > videoMode->width || height > videoMode->height) {
 		return;
 	}
 
