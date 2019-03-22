@@ -1,5 +1,5 @@
-#ifndef AUTOMATA_WINDOW_H
-#define AUTOMATA_WINDOW_H
+#ifndef AUTOMATA_IMAGE_H
+#define AUTOMATA_IMAGE_H
 
 /* data structures */
 typedef struct AutomataImage {
