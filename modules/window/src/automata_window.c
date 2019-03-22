@@ -196,7 +196,7 @@ void automataWindowSetIcon(int width, int height, unsigned char *pixels) {
 	image[0].pixels = pixels;
 
 	/* set the window icon */
-	glfwSetWindowIcon(window, 1, &image);
+	glfwSetWindowIcon(window, 1, image);
 }
 
 void automataWindowRemoveIcon() {
