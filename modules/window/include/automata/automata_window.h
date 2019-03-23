@@ -17,7 +17,7 @@ typedef enum AutomataWindowMode {
 
 /* functions */
 void automataWindowInit();
-void automataWindowCreate(unsigned int width, unsigned int height, const char *title);
+void automataWindowCreate(int width, int height, const char *title);
 void automataWindowClose();
 void automataWindowTerminate();
 int automataWindowIsAlive();
@@ -27,7 +27,7 @@ unsigned int automataWindowGetWidth();
 unsigned int automataWindowGetHeight();
 AutomataWindowMode automataWindowGetMode();
 void automataWindowSetTitle(const char *title);
-void automataWindowSetSize(unsigned int width, unsigned int height);
+void automataWindowSetSize(int width, int height);
 void automataWindowSetMode(AutomataWindowMode mode);
 GLFWwindow *automataWindowGetWindow();
 void automataWindowSetIcon(int width, int height, unsigned char *pixels);

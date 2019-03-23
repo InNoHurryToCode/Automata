@@ -25,8 +25,10 @@ void automataWindowInit() {
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 }
 
-void automataWindowCreate(unsigned int width, unsigned int height, const char *title) {		
-	if (window) {
+void automataWindowCreate(int width, int height, const char *title) {		
+	const GLFWvidmode *videoMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+
+	if (window || !videoMode || width < 0 || width > videoMode->width || height < 0 || height > videoMode->height || !title) {
 		return;
 	}
 	
@@ -140,15 +142,15 @@ void automataWindowSetTitle(const char *title) {
 	glfwSetWindowTitle(window, title);
 }
 
-void automataWindowSetSize(unsigned int width, unsigned int height) {
+void automataWindowSetSize(int width, int height) {
 	const GLFWvidmode *videoMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 	
-	if (!window || ! videoMode || width > videoMode->width || height > videoMode->height) {
+	if (!window || !videoMode || width < 0 || width > videoMode->width || height < 0 || height > videoMode->height) {
 		return;
 	}
 
 	/* apply window size to window */
-	glfwSetWindowSize(window, (int)width, (int)height);
+	glfwSetWindowSize(window, width, height);
 }
 
 void automataWindowSetMode(AutomataWindowMode mode) {
