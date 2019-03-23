@@ -9,7 +9,7 @@ int main() {
 
 	/* intialize application */
 	automataWindowInit();
-	automataWindowCreate(1280, 720, "Automata Engine");
+	automataWindowCreate(1280, 720, "Automata Framework");
 	automataInputInit(automataWindowGetWindow());
 
 	/* set window icon*/
