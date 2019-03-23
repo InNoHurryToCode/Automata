@@ -5,21 +5,17 @@
 
 int main() {
 	/* variables */
-	AutomataImage *windowIcon = NULL;
+	AutomataImage windowIcon = { NULL, 0, 0, 0 };
 
 	/* intialize application */
 	automataWindowInit();
 	automataWindowCreate(1280, 720, "Automata Engine");
+	automataInputInit(automataWindowGetWindow());
 
 	/* set window icon*/
-	windowIcon = automataImageLoad("sprites/icon.png");
-
-	if (windowIcon) {
-		automataWindowSetIcon(windowIcon->width, windowIcon->height, windowIcon->pixels);
-		automataImageUnload(windowIcon);
-	}
-	
-	automataInputInit(automataWindowGetWindow());
+	automataImageLoad(&windowIcon, "sprites/icon.png");
+	automataWindowSetIcon(windowIcon.width, windowIcon.height, windowIcon.pixels);
+	automataImageUnload(&windowIcon);
 
 	/* application loop */
 	while (automataWindowIsAlive()) {

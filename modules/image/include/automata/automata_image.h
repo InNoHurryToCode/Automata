@@ -10,7 +10,7 @@ typedef struct AutomataImage {
 } AutomataImage;
 
 /* functions */
-AutomataImage *automataImageLoad(const char *filePath);
+void automataImageLoad(AutomataImage *image, const char *filePath);
 void automataImageUnload(AutomataImage *image);
 
 #endif
