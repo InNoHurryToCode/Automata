@@ -97,7 +97,7 @@ void automataWindowSwapBuffers() {
 	glfwSwapBuffers(window);
 }
 
-unsigned int automataWindowGetWidth() {
+int automataWindowGetWidth() {
 	int width = 0;
 	int height = 0;
 	
@@ -111,7 +111,7 @@ unsigned int automataWindowGetWidth() {
 	return width;
 }
 
-unsigned int automataWindowGetHeight() {
+int automataWindowGetHeight() {
 	int width = 0;
 	int height = 0;
 
@@ -134,7 +134,7 @@ AutomataWindowMode automataWindowGetMode() {
 }
 
 void automataWindowSetTitle(const char *title) {
-	if (!window) {
+	if (!window || !title) {
 		return;
 	}
 	
@@ -189,7 +189,7 @@ GLFWwindow *automataWindowGetWindow() {
 }
 
 void automataWindowSetIcon(int width, int height, unsigned char *pixels) {
-	if (!pixels) {
+	if (width < 0|| height < 0 || !pixels) {
 		return;
 	}
 
