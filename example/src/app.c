@@ -1,11 +1,11 @@
 #include <stdlib.h>
-#include <automata\automata_window.h>
-#include <automata\automata_input.h>
 #include <automata\automata_image.h>
+#include <automata\automata_input.h>
+#include <automata\automata_window.h>
 
 int main() {
 	/* variables */
-	AutomataImage windowIcon = { NULL, 0, 0, 0 };
+	AutomataImage windowIcon = { 0, 0, 0, NULL };
 
 	/* intialize application */
 	automataWindowInit();

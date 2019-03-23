@@ -3,10 +3,10 @@
 
 /* data structures */
 typedef struct AutomataImage {
-	unsigned char *pixels;
 	int width;
 	int height;
 	int channels;
+	unsigned char *pixels;
 } AutomataImage;
 
 /* functions */
