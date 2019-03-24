@@ -20,33 +20,32 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{46167FED-569D-4C8B-BA27-D803F767921D}</ProjectGuid>
-    <RootNamespace>Example</RootNamespace>
+    <ProjectGuid>{90D2FA68-1BEB-44B5-B0A1-34D9252DA7F6}</ProjectGuid>
+    <RootNamespace>graphics</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.10240.0</WindowsTargetPlatformVersion>
-    <ProjectName>example</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -71,32 +70,28 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(ProjectDir)app\</OutDir>
-    <IncludePath>$(SolutionDir)modules\window\include;$(SolutionDir)modules\input\include;$(SolutionDir)modules\image\include;$(SolutionDir)dependencies\glfw\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)modules\window\libs;$(SolutionDir)modules\input\libs;$(SolutionDir)modules\image\libs;$(SolutionDir)dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
+    <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
-    <TargetName>$(ProjectName)_$(PlatformShortName)</TargetName>
+    <ReferencePath>$(SolutionDir)dependencies\glad\include;$(IncludePath)</ReferencePath>
+    <LibraryPath>$(SolutionDir)dependencies\glad\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(ProjectDir)app\</OutDir>
-    <IncludePath>$(SolutionDir)modules\window\include;$(SolutionDir)modules\input\include;$(SolutionDir)modules\image\include;$(SolutionDir)dependencies\glfw\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)modules\window\libs;$(SolutionDir)modules\input\libs;$(SolutionDir)modules\image\libs;$(SolutionDir)dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
+    <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
-    <TargetName>$(ProjectName)_$(PlatformShortName)</TargetName>
+    <ReferencePath>$(SolutionDir)dependencies\glad\include;$(IncludePath)</ReferencePath>
+    <LibraryPath>$(SolutionDir)dependencies\glad\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(ProjectDir)app\</OutDir>
+    <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
-    <IncludePath>$(SolutionDir)modules\window\include;$(SolutionDir)modules\input\include;$(SolutionDir)modules\image\include;$(SolutionDir)dependencies\glfw\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)modules\window\libs;$(SolutionDir)modules\input\libs;$(SolutionDir)modules\image\libs;$(SolutionDir)dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
-    <TargetName>$(ProjectName)_$(PlatformShortName)</TargetName>
+    <ReferencePath>$(SolutionDir)dependencies\glad\include;$(IncludePath)</ReferencePath>
+    <LibraryPath>$(SolutionDir)dependencies\glad\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(ProjectDir)app\</OutDir>
+    <OutDir>$(ProjectDir)libs\</OutDir>
     <IntDir>$(ProjectDir)build\</IntDir>
-    <IncludePath>$(SolutionDir)modules\window\include;$(SolutionDir)modules\input\include;$(SolutionDir)modules\image\include;$(SolutionDir)dependencies\glfw\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)modules\window\libs;$(SolutionDir)modules\input\libs;$(SolutionDir)modules\image\libs;$(SolutionDir)dependencies\glfw\libs;$(LibraryPath)</LibraryPath>
-    <TargetName>$(ProjectName)_$(PlatformShortName)</TargetName>
+    <ReferencePath>$(SolutionDir)dependencies\glad\include;$(IncludePath)</ReferencePath>
+    <LibraryPath>$(SolutionDir)dependencies\glad\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -104,9 +99,6 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>glfw3_x64.lib;automata_image_x64.lib;automata_input_x64.lib;automata_window_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -114,9 +106,6 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>glfw3_x86.lib;automata_image_x86.lib;automata_input_x86.lib;automata_window_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -129,7 +118,6 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glfw3_x86.lib;automata_image_x86.lib;automata_input_x86.lib;automata_window_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -143,11 +131,9 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glfw3_x64.lib;automata_image_x64.lib;automata_input_x64.lib;automata_window_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\app.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
