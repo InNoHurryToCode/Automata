@@ -1,0 +1,1 @@
+#include "../include/automata/automata_platform.h"

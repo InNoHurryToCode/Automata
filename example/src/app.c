@@ -1,11 +1,11 @@
 #include <stdlib.h>
-#include <automata\automata_image.h>
+#include <automata\automata_file.h>
 #include <automata\automata_input.h>
 #include <automata\automata_window.h>
 
 int main() {
 	/* variables */
-	AutomataImage windowIcon = { 0, 0, 0, NULL };
+	AutomataImageFile windowIcon = { 0, 0, 0, NULL };
 
 	/* intialize application */
 	automataWindowInit();
@@ -13,9 +13,9 @@ int main() {
 	automataInputInit(automataWindowGetWindow());
 
 	/* set window icon*/
-	automataImageLoad(&windowIcon, "sprites/icon.png");
+	automataFileLoadImage(&windowIcon, "sprites/icon.png");
 	automataWindowSetIcon(windowIcon.width, windowIcon.height, windowIcon.pixels);
-	automataImageUnload(&windowIcon);
+	automataFileUnloadImage(&windowIcon);
 
 	/* application loop */
 	while (automataWindowIsAlive()) {

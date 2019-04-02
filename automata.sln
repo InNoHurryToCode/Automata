@@ -5,9 +5,10 @@ VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glad", "dependencies\glad\glad.vcxproj", "{DF36892C-B103-4168-93DB-DDE5F78D843E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "image", "modules\image\image.vcxproj", "{BCE3C552-AC8C-42DA-8F15-7EF56C4D1AAF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "file", "modules\file\file.vcxproj", "{BCE3C552-AC8C-42DA-8F15-7EF56C4D1AAF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B9038157-647E-4193-9CFB-FCBD1A9E8FCF} = {B9038157-647E-4193-9CFB-FCBD1A9E8FCF}
+		{DB87288B-C7BE-48D4-AE25-9123112B3C6D} = {DB87288B-C7BE-48D4-AE25-9123112B3C6D}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "input", "modules\input\input.vcxproj", "{D4AD9797-5E90-436C-BC6F-DC951A668D00}"
@@ -46,6 +47,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "audio", "modules\audio\audio.vcxproj", "{0C960D96-3BF5-44CF-B7B4-7D42DA581DF9}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "network", "modules\network\network.vcxproj", "{30B2569F-8CD9-485D-B028-9416825013E6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "platform", "modules\platform\platform.vcxproj", "{DB87288B-C7BE-48D4-AE25-9123112B3C6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -143,6 +146,14 @@ Global
 		{30B2569F-8CD9-485D-B028-9416825013E6}.Release|x64.Build.0 = Release|x64
 		{30B2569F-8CD9-485D-B028-9416825013E6}.Release|x86.ActiveCfg = Release|Win32
 		{30B2569F-8CD9-485D-B028-9416825013E6}.Release|x86.Build.0 = Release|Win32
+		{DB87288B-C7BE-48D4-AE25-9123112B3C6D}.Debug|x64.ActiveCfg = Debug|x64
+		{DB87288B-C7BE-48D4-AE25-9123112B3C6D}.Debug|x64.Build.0 = Debug|x64
+		{DB87288B-C7BE-48D4-AE25-9123112B3C6D}.Debug|x86.ActiveCfg = Debug|Win32
+		{DB87288B-C7BE-48D4-AE25-9123112B3C6D}.Debug|x86.Build.0 = Debug|Win32
+		{DB87288B-C7BE-48D4-AE25-9123112B3C6D}.Release|x64.ActiveCfg = Release|x64
+		{DB87288B-C7BE-48D4-AE25-9123112B3C6D}.Release|x64.Build.0 = Release|x64
+		{DB87288B-C7BE-48D4-AE25-9123112B3C6D}.Release|x86.ActiveCfg = Release|Win32
+		{DB87288B-C7BE-48D4-AE25-9123112B3C6D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -159,6 +170,7 @@ Global
 		{D860DB7B-1052-4586-86AA-83D47B3F411A} = {7057151B-AE24-4C60-AF49-9B68565BBE4F}
 		{0C960D96-3BF5-44CF-B7B4-7D42DA581DF9} = {7057151B-AE24-4C60-AF49-9B68565BBE4F}
 		{30B2569F-8CD9-485D-B028-9416825013E6} = {7057151B-AE24-4C60-AF49-9B68565BBE4F}
+		{DB87288B-C7BE-48D4-AE25-9123112B3C6D} = {7057151B-AE24-4C60-AF49-9B68565BBE4F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CA2F1C6F-B9D8-4113-91C2-97466347ACAA}

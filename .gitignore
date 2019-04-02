@@ -335,8 +335,13 @@ Example/app/
 # Project lib directories
 dependencies/glad/libs/
 dependencies/glfw/libs/
-modules/image/libs/
+modules/audio/libs/
+modules/file/libs/
+modules/graphics/libs/
 modules/input/libs/
+modules/math/libs/
+modules/network/libs/
+modules/platform/libs/
 modules/window/libs/
 
 # Project build directories
@@ -344,6 +349,11 @@ dependencies/glad/build/
 dependencies/glfw/build/
 dependencies/stb/build/
 example/build/
-modules/image/build/
+modules/audio/build/
+modules/file/build/
+modules/graphics/build/
 modules/input/build/
+modules/math/build/
+modules/network/build/
+modules/platform/build/
 modules/window/build/
